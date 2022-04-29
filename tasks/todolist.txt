@@ -1,0 +1,44 @@
+
+until Monday:
+
+sepid:
+writing Users routs
+add views- list of views
+writing Recipes routs
+add views
+
+sign up - sign in - log out //sepid
+
+
+preparing Visulas  //sepid
+
+Jide:
+preparing seed file for recipes and chefs + Images
+
+
+
+
+
+after Monday: 
+cloudinary data
+bonus tasks :
+
+-and when user want to reserve achef,, wee need to check is he free or not⇒yes
+-we need another boolian
+
+or maybe we can use api for calender ⇒ to look for YES agreed
+
+-
+we need to show
+
+in current month
+
+is this chef free or nt
+
+or the days that he/she free
+
+Super Bonus:
+Add Bookings
+
+Super Super Bonus:
+email confirmation
