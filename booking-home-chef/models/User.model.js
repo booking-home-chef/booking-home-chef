@@ -1,13 +1,24 @@
+const { default: mongoose } = require("mongoose");
 const { Schema, model } = require("mongoose");
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const userSchema = new Schema(
   {
-    username: {
+    email: {
       type: String,
-      // unique: true -> Ideally, should be unique, but its up to you
+      required:true,
+      unique:true,
     },
-    password: String,
+    password:{
+      type: String,
+      required:true,
+    },
+    image_Url:String,
+    recipes:[{
+      type : mongoose.Schema.Types.ObjectId,
+      ref: "Recipe"
+    }],
+    isProfilePublic: Boolean
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
