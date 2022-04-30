@@ -7,7 +7,7 @@ sepid:
 []writing Recipes routs
 []add views
 
-[]sign up - sign in - log out //sepid
+[x]sign up - sign in - log out //sepid   <<<<<--------- Done!
 
 
 [X]preparing Visulas  //sepid        <<<<<---------First version wireframes Done!
