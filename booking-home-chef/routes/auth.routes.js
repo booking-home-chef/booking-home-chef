@@ -19,11 +19,11 @@ router.get("/signup", isLoggedOut, (req, res) => {
 });
 
 router.post("/signup", isLoggedOut, (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
-  if (!username) {
+  if (!email) {
     return res.status(400).render("auth/signup", {
-      errorMessage: "Please provide your username.",
+      errorMessage: "Please provide your email.",
     });
   }
 
@@ -46,12 +46,12 @@ router.post("/signup", isLoggedOut, (req, res) => {
   */
 
   // Search the database for a user with the username submitted in the form
-  User.findOne({ username }).then((found) => {
+  User.findOne({ email }).then((found) => {
     // If the user is found, send the message username is taken
     if (found) {
       return res
         .status(400)
-        .render("auth.signup", { errorMessage: "Username already taken." });
+        .render("auth.signup", { errorMessage: "email already taken." });
     }
 
     // if user is not found, create a new user - start with hashing the password
@@ -61,14 +61,14 @@ router.post("/signup", isLoggedOut, (req, res) => {
       .then((hashedPassword) => {
         // Create a user and save it in the database
         return User.create({
-          username,
+          email,
           password: hashedPassword,
         });
       })
       .then((user) => {
         // Bind the user to the session object
         req.session.user = user;
-        res.redirect("/");
+        res.redirect("/user/user-profile");
       })
       .catch((error) => {
         if (error instanceof mongoose.Error.ValidationError) {
@@ -79,7 +79,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
         if (error.code === 11000) {
           return res.status(400).render("auth/signup", {
             errorMessage:
-              "Username need to be unique. The username you chose is already in use.",
+              "email need to be unique. The email you chose is already in use.",
           });
         }
         return res
@@ -89,33 +89,33 @@ router.post("/signup", isLoggedOut, (req, res) => {
   });
 });
 
-router.get("/login", isLoggedOut, (req, res) => {
-  res.render("auth/login");
+router.get("/signin", isLoggedOut, (req, res) => {
+  res.render("auth/signin");
 });
 
-router.post("/login", isLoggedOut, (req, res, next) => {
-  const { username, password } = req.body;
+router.post("/signin", isLoggedOut, (req, res, next) => {
+  const { email, password } = req.body;
 
-  if (!username) {
-    return res.status(400).render("auth/login", {
-      errorMessage: "Please provide your username.",
+  if (!email) {
+    return res.status(400).render("auth/signin", {
+      errorMessage: "Please provide your email.",
     });
   }
 
   // Here we use the same logic as above
   // - either length based parameters or we check the strength of a password
   if (password.length < 8) {
-    return res.status(400).render("auth/login", {
+    return res.status(400).render("auth/signin", {
       errorMessage: "Your password needs to be at least 8 characters long.",
     });
   }
 
   // Search the database for a user with the username submitted in the form
-  User.findOne({ username })
+  User.findOne({ email })
     .then((user) => {
       // If the user isn't found, send the message that user provided wrong credentials
       if (!user) {
-        return res.status(400).render("auth/login", {
+        return res.status(400).render("auth/signin", {
           errorMessage: "Wrong credentials.",
         });
       }
@@ -123,13 +123,13 @@ router.post("/login", isLoggedOut, (req, res, next) => {
       // If user is found based on the username, check if the in putted password matches the one saved in the database
       bcrypt.compare(password, user.password).then((isSamePassword) => {
         if (!isSamePassword) {
-          return res.status(400).render("auth/login", {
+          return res.status(400).render("auth/signin", {
             errorMessage: "Wrong credentials.",
           });
         }
         req.session.user = user;
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
-        return res.redirect("/");
+        return res.redirect("/user/user-profile");
       });
     })
 

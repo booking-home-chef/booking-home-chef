@@ -1,12 +1,16 @@
+<h1>Sign up</h1>
+<a href="/auth/signin">Sign in</a>
+<hr>
 <form action="/auth/signup" method="POST">
-   <label> Username
-      <input type="text" name="username">
+   <label> Email
+      <input type="email" name="email">
    </label>
    <label> Password
       <input type="password" name="password">
    </label>
+   <p>if you have an account, clik <a href="/auth/signin">here</a> </p>
 
-   <button type="submit">Submit</button>
+   <button type="submit">Create account</button>
 </form>
 
 {{#if errorMessage}}

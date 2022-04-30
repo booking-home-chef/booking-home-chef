@@ -1,0 +1,18 @@
+
+<h1>Sign in</h1>
+<a href="/auth/signup">Sign up</a>
+<hr>
+<form action="/auth/signin" method="POST">
+   <label> Email
+      <input type="text" name="email">
+   </label>
+   <label> Password
+      <input type="password" name="password">
+   </label>
+
+   <button type="submit">Sign in</button>
+</form>
+
+{{#if errorMessage}}
+   {{errorMessage}}
+{{/if}}
