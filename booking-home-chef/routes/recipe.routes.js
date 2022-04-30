@@ -28,11 +28,11 @@ router.get("/recipe/create-recipe",isLoggedIn, (req, res, next) => {
 
 // CREATE: process form
 router.post("/recipe/create-recipe",isLoggedIn, (req, res, next) => {
-
+  const owner = req.session.user._id
   const { name, ingredient, description, dietary } = req.body
   console.log( { name, ingredient, description, dietary });
 
-  Recipe.create( { name, ingredient, description, dietary })
+  Recipe.create( { name, ingredient, description, dietary,owner })
     .then((recipeFromDB) => {
       console.log(recipeFromDB);
       res.redirect("/recipe");
@@ -60,8 +60,6 @@ router.get("/recipe/:recipeId",isLoggedIn,(req,res,next)=>{
 
 
 
-
-//recipe detail
 
 
 //edite recipe
