@@ -1,4 +1,4 @@
-<form action="/recipe/create" method="POST">
+<form action="/recipe/create-recipe" method="POST">
   <div class="row">
     <div class="col">
       <input
@@ -20,22 +20,32 @@
     </div>
   </div>
   <br>
+         <label for="floatingTextarea">Description</label>
  <div class="form-floating">
+
     <textarea
       name="description"
       class="form-control"
       placeholder="Write Description Here"
       id="floatingTextarea"
     ></textarea>
-    <label for="floatingTextarea">Description</label>
+
   </div>
+<br>
 
   <div>
     <select name="dietary" class="form-select"  multiple>
       <option selected>select dietary</option>
-      {{#each recipes}}
-        <option name="cast" value="{{this._id}}">{{this.dietary}}</option>
-      {{/each}}
+        <option name="dietary" value="">Lactose intolerance</option>
+        <option name="dietary" value="">Gluten intolerance or sensitivity</option>
+        <option name="dietary" value="">Vegetarian</option>
+        <option name="dietary" value="">Vegan</option>
+        <option name="dietary" value="">Kosher</option>
+        <option name="dietary" value="">Keto</option>
+        <option name="dietary" value="">Diabetes</option>
+        <option name="dietary" value="">Dairy-free</option>
+        <option name="dietary" value="">Low carb</option>
+        <option name="dietary" value=""></option>Food allergies</option>
     </select>
   </div>
 <br>

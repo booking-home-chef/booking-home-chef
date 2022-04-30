@@ -14,16 +14,4 @@ router.get("/",(req,res,next)=>{
 })
 
 
-router.get("/:recipeId",isLoggedIn,(req,res,next)=>{
-  const{recipeId} = req.params
-  Recipe.findById(recipeId)
-  .then(recipeDetail=>{
-    console.log(recipeDetail);
-    res.render("recipe/recipe-detail",recipeDetail)
-  })
-  .catch(e=>console.log("error to find detail of recipe",e))
-})
-
-
-
 module.exports = router;

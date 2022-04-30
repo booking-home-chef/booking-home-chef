@@ -6,8 +6,7 @@
 {{#each recipes}}
 <h3>{{this.name}}</h3>
 <span>{{this.dietary}} |</span>
-{{!-- this link need to check that user loggin or not --}}
-<a href="/{{this.id}}">see full recipe</a>
+<a href="/recipe/{{this.id}}">see full recipe</a>
 <hr>
 {{/each}}
 
