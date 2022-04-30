@@ -141,15 +141,12 @@ router.post("/signin", isLoggedOut, (req, res, next) => {
     });
 });
 
-router.get("/logout", isLoggedIn, (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      return res
-        .status(500)
-        .render("auth/logout", { errorMessage: err.message });
-    }
-    res.redirect("/");
+router.post('/logout', isLoggedIn, (req, res, next) => {
+  req.session.destroy(err => {
+      if (err) next(err);
+      res.redirect('/');
   });
 });
+
 
 module.exports = router;

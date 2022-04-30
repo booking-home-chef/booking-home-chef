@@ -1,3 +1,4 @@
+const isLoggedIn = require("../middleware/isLoggedIn");
 const Recipe = require("../models/Recipe.model");
 
 const router = require("express").Router();
@@ -13,7 +14,7 @@ router.get("/",(req,res,next)=>{
 })
 
 
-router.get("/:recipeId",(req,res,next)=>{
+router.get("/:recipeId",isLoggedIn,(req,res,next)=>{
   const{recipeId} = req.params
   Recipe.findById(recipeId)
   .then(recipeDetail=>{
