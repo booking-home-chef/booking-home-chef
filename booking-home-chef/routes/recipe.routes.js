@@ -6,7 +6,7 @@ const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
 //list of all recipe
-router.get("/recipe",(req,res,next)=>{
+router.get("/recipe",isLoggedIn,(req,res,next)=>{
   Recipe.find()
   .then(recipesArr=>{
     console.log(recipesArr);
@@ -14,19 +14,6 @@ router.get("/recipe",(req,res,next)=>{
   })
   .catch(e=>console.log("error to find  list of recipes",e))
 })
-
-
-// recipe detail
-router.get("/recipe/:recipeId",isLoggedIn,(req,res,next)=>{
-  const{recipeId} = req.params
-  Recipe.findById(recipeId)
-  .then(recipeDetail=>{
-    console.log(recipeDetail);
-    res.render("recipe/recipe-detail",recipeDetail)
-  })
-  .catch(e=>console.log("error to find detail of recipe",e))
-})
-
 
 
 
@@ -45,10 +32,10 @@ router.post("/recipe/create-recipe",isLoggedIn, (req, res, next) => {
   const { name, ingredient, description, dietary } = req.body
   console.log( { name, ingredient, description, dietary });
 
-  Author.create( { name, ingredient, description, dietary })
+  Recipe.create( { name, ingredient, description, dietary })
     .then((recipeFromDB) => {
       console.log(recipeFromDB);
-      res.redirect("/:userId");
+      res.redirect("/recipe");
     })
     .catch(err => {
       console.log("error creating book on DB", err)
@@ -56,6 +43,23 @@ router.post("/recipe/create-recipe",isLoggedIn, (req, res, next) => {
     });
 
 })
+
+
+
+// recipe detail
+router.get("/recipe/:recipeId",isLoggedIn,(req,res,next)=>{
+  const{recipeId} = req.params
+  Recipe.findById(recipeId)
+  .then(recipeDetail=>{
+    console.log(recipeDetail);
+    res.render("recipe/recipe-detail",recipeDetail)
+  })
+  .catch(e=>console.log("error to find detail of recipe",e))
+})
+
+
+
+
 
 //recipe detail
 

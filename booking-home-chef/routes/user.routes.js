@@ -15,14 +15,6 @@ router.get("/:userId", (req, res, next) => {
 
 });
 
-router.get("/:userId", (req, res, next) => {
-  const { userId } = req.params
-  User.findById(userId)
-    .then(user => {
-      res.render("user/user-profile", user);
-    })
-
-});
 
 
 

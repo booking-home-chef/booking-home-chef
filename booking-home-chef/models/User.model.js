@@ -14,10 +14,6 @@ const userSchema = new Schema(
       required:true,
     },
     image_Url:String,
-    recipes:[{
-      type : mongoose.Schema.Types.ObjectId,
-      ref: "Recipe"
-    }],
     isProfilePublic: Boolean
   },
   {
