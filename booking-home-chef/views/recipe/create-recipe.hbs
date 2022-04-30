@@ -1,0 +1,44 @@
+<form action="/recipe/create" method="POST">
+  <div class="row">
+    <div class="col">
+      <input
+        name="name"
+        type="text"
+        class="form-control"
+        placeholder="Recipe name"
+        aria-label="Recipe name"
+      />
+    </div>
+    <div class="col">
+      <input
+        name="ingredient"
+        type="text"
+        class="form-control"
+        placeholder="Ingredients"
+        aria-label="Ingredient"
+      />
+    </div>
+  </div>
+  <br>
+ <div class="form-floating">
+    <textarea
+      name="description"
+      class="form-control"
+      placeholder="Write Description Here"
+      id="floatingTextarea"
+    ></textarea>
+    <label for="floatingTextarea">Description</label>
+  </div>
+
+  <div>
+    <select name="dietary" class="form-select"  multiple>
+      <option selected>select dietary</option>
+      {{#each recipes}}
+        <option name="cast" value="{{this._id}}">{{this.dietary}}</option>
+      {{/each}}
+    </select>
+  </div>
+<br>
+  <button>Create New Recipe</button>
+
+</form>
