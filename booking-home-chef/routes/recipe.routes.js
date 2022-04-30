@@ -60,13 +60,26 @@ router.get("/recipe/:recipeId",isLoggedIn,(req,res,next)=>{
 })
 
 
+//edit recipe
+router.get('/recipe/:recipeId/edit',isLoggedIn, (req, res, next) => {
+  const{recipeId} = req.params;
 
-
-
-
-//edite recipe
+  Recipe.findById(recipeId)
+    .then(recipeDetail => res.render('recipe/edit-recipe', recipeDetail))
+    .catch(error => next(error));
+});
 
 //edit recipe process
+router.post('/recipe/:recipeId/edit', (req, res, next) => {
+  const { recipeId } = req.params;
+  const { name, ingredient, description, dietary } = req.body;
+
+  Recipe.findByIdAndUpdate(recipeId, { name, ingredient, description, dietary })
+    .then(updatedRecipe => res.redirect(`/recipe/${recipeId}`))
+    .catch(error => next(error));
+
+});
+
 
 
 //delete recipe

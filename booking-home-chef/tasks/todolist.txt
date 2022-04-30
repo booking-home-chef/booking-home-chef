@@ -2,10 +2,10 @@
 until Monday:
 
 sepid:
-[]  writing Users routs
-[]add views- list of views
-[]writing Recipes routs
-[]add views
+[x]  writing Users routs
+[x]add views- list of views
+[x]writing Recipes routs
+[x]add views
 
 [x]sign up - sign in - log out //sepid   <<<<<--------- Done!
 

@@ -13,6 +13,7 @@ const userSchema = new Schema(
       type: String,
       required:true,
     },
+    name : String,
     specialities: String,
     image_Url:String,
     isProfilePublic: Boolean,
