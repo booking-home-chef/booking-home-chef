@@ -22,6 +22,10 @@ const capitalized = require("./utils/capitalized");
 const projectName = "booking-home-chef";
 
 app.locals.appTitle = `${capitalized(projectName)} created with IronLauncher`;
+app.use((req, res, next) => {
+  res.locals.session = req.session; // allow access to session data from layout.hbs
+  next()
+});
 
 // 👇 Start handling routes here
 app.use("/", require("./routes/index.routes"));

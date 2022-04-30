@@ -5,8 +5,13 @@ const User = require("../models/User.model");
 
 
 //create user
-router.get("/user-profile", (req, res, next) => {
-  res.render("user/user-profile");
+router.get("/:userId", (req, res, next) => {
+  const{userId} = req.params
+  User.findById(userId)
+  .then(user =>{
+    res.render("user/user-profile",user);
+  })
+  
 });
 
 
