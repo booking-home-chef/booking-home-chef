@@ -48,11 +48,13 @@ router.post("/recipe/create-recipe",isLoggedIn, (req, res, next) => {
 
 // recipe detail
 router.get("/recipe/:recipeId",isLoggedIn,(req,res,next)=>{
-  const{recipeId} = req.params
+  const ownerId = req.session.user._id;
+  const{recipeId} = req.params;
+
   Recipe.findById(recipeId)
   .then(recipeDetail=>{
-    console.log(recipeDetail);
-    res.render("recipe/recipe-detail",recipeDetail)
+    const isTheSame= ownerId ==recipeDetail.owner;
+    res.render("recipe/recipe-detail",{recipeDetail,isTheSame})
   })
   .catch(e=>console.log("error to find detail of recipe",e))
 })
@@ -68,6 +70,16 @@ router.get("/recipe/:recipeId",isLoggedIn,(req,res,next)=>{
 
 
 //delete recipe
+
+router.post('/recipe/:recipeId/delete',isLoggedIn, (req, res, next) => {
+  const{recipeId} = req.params;
+  const ownerId = req.session.user._id;
+  Recipe.findByIdAndDelete(recipeId)
+    .then(() => res.redirect(`/user/${ownerId}/my-recipes`))
+    .catch(error => next(error));
+
+});
+
 
 
 

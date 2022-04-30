@@ -20,31 +20,15 @@ router.get("/:userId", (req, res, next) => {
 //my recipes /////issue!!!
 
 
-// router.get("/:userId/my-recipes",isLoggedIn,(req,res,next)=>{
-//   const  userId  = req.params.userId
-//   Recipe.find()
-//   .populate("owner")
-//   .then(recipesArr=>{
-    
-//     let myRec = recipesArr.filter(recipe =>{
-//       Object.hasOwn(recipe, 'owner') ==true
-//     })
-//     console.log(myRec);
-
-
-//     // myRec.forEach(recipe=>{
-//     //   if(userId == recipe.owner._id){
-//     //     res.render("recipe/recipe-list",{recipes : recipesArr})
-//     //   } else{
-//     //     res.redirect("user/user-profile")
-//     //   }
-//     // })
-
-
-//   })
-//   .catch(e=>console.log("error to find  list of recipes",e))
-// })
-
+router.get("/:userId/my-recipes",isLoggedIn,(req,res,next)=>{
+  const  userId  = req.params.userId
+  Recipe.find( {owner: {_id: userId}} )
+  .then(recipesArr=>{
+    console.log(recipesArr);
+    res.render("recipe/recipe-list",{recipes : recipesArr})
+  })
+  .catch(e=>console.log("error to find  list of recipes",e))
+})
 
 
 

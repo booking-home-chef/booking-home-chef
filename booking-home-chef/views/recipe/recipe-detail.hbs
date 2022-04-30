@@ -1,9 +1,22 @@
 
-<h3>{{name}}</h3>
-<h5>Ingredients : {{ingredient}}</h5>
-<p>Description : {{description}}</p>
+<h3>{{recipeDetail.name}}</h3>
+<h5>Ingredients : {{recipeDetail.ingredient}}</h5>
+<p>Description : {{recipeDetail.description}}</p>
 <h5>Diatery :</h5>
-{{#each dietary}}
+{{#each recipeDetail.dietary}}
 <span>{{this}} |</span>
 {{/each}}
 <a href="/">Back to Home page</a>
+
+<br>
+
+{{#if isTheSame}}
+
+<a href="">Edit Recipe</a>
+<br>
+<br>
+<form action="/recipe/{{recipeDetail._id}}/delete" method="POST">
+<button type="submit">Delete</button>
+</form>
+
+{{/if}}

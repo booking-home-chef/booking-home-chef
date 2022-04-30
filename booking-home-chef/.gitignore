@@ -7,3 +7,7 @@ npm-debug.log
 # Environment Variables should NEVER be published
 .env
 
+<<<<<<< HEAD
+=======
+#bin
+>>>>>>> c7eeecf321d5aa947908523b18926fc9dc93a28d
