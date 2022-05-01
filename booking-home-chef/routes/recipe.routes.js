@@ -8,10 +8,11 @@ const Favorite = require("../models/Favorite.model");
 
 //list of all recipe
 router.get("/recipe",(req, res, next) => {
+  const userId =req.session.user._id
   Recipe.find()
     .then(recipesArr => {
 
-      res.render("recipe/recipe-list", { recipes: recipesArr })
+      res.render("recipe/recipe-list", { recipes: recipesArr,userId })
     })
     .catch(e => console.log("error to find  list of recipes", e))
 })
@@ -20,8 +21,8 @@ router.get("/recipe",(req, res, next) => {
 // TODO : add middleware to limit Normal user
 //create new recipe
 router.get("/recipe/create-recipe",(req, res, next) => {
-
-  res.render("recipe/create-recipe")
+  const userId =req.session.user._id
+  res.render("recipe/create-recipe",{userId})
 })
 
 

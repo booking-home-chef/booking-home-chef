@@ -19,14 +19,15 @@ router.get("/:userId/settings",(req, res, next)=>{
     .catch(err=>console.log(`Error is ${err}`))
 })
 
-
+// let image_Url = req.body.image_Url ? req.body.image_Url : "/image/placeholder.png";
 
 //Set the user as a Chef proccess
 router.post("/:userId/settings",(req, res, next)=>{
+  let image_Url = req.body.image_Url || "/images/placeholder.png";
   const {userId} = req.params
-  const {name,specialities,aboutMe} = req.body
+  const {name,specialities,aboutMe} = req.body;
 
-  User.findByIdAndUpdate(userId,{name,specialities,aboutMe})
+  User.findByIdAndUpdate(userId,{name,specialities,aboutMe,image_Url})
     .then(userInfo=> {
       console.log(userInfo)
       res.redirect(`/user/${userId}`)
@@ -42,7 +43,7 @@ router.post("/:userId/settings",(req, res, next)=>{
 router.get("/:userId/my-recipes",(req,res,next)=>{
   const  userId  = req.params.userId;
   Recipe.find( {owner: {_id: userId}} )
-  .then(recipesArr=> res.render("recipe/recipe-list",{recipes : recipesArr}))
+  .then(recipesArr=> res.render("recipe/recipe-list",{recipes : recipesArr,userId}))
   .catch(e=>console.log("error to find  list of recipes",e))
 })
 
@@ -50,12 +51,12 @@ router.get("/:userId/my-recipes",(req,res,next)=>{
 
  //add to my favorite recipe
 router.get('/:userId/my-favorite-recipes',(req, res, next) => {
-  
+
 Favorite.find()
 .populate("favRecipe")
 .then((favRecipesArr)=>{
-  console.log(favRecipesArr);
-  res.render("recipe/favorite-recipe-list",{recipes : favRecipesArr})
+  const userId = req.params.userId
+  res.render("recipe/favorite-recipe-list",{recipes : favRecipesArr,userId})
 })
 .catch(error => next(error));
 
@@ -70,7 +71,7 @@ router.get("/:userId", (req, res, next) => {
   
   User.findById(userId)
     .then(user => {
-      console.log(req.session.user);
+      console.log(user);
       res.render("user/user-profile", user);
     })
 

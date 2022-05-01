@@ -5,6 +5,10 @@
 <form action="/user/{{_id}}/settings" method="POST">
 
 {{!-- /// add image here >>>> image_Url ,,and having an alternative placeholder image,,,writing an if for it --}}
+
+  <label for="img">Upload your profile picture</label>
+  <input type="file" id="img" name="image_Url" accept="image/*">
+  
   <div class="row">
     <div class="col">
       <label>Name
