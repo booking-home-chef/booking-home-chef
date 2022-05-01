@@ -13,8 +13,7 @@ sepid:
 [X]preparing Visulas  //sepid        <<<<<---------First version wireframes Done!
 
 Jide:
-[]preparing seed file for recipes and chefs + Images
-
+[X]preparing seed file for recipes and chefs + Images...<<<<<--------- Done!
 
 
 
