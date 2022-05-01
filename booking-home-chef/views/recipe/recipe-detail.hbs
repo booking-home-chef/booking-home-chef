@@ -20,3 +20,10 @@
 </form>
 
 {{/if}}
+
+{{!-- ///TODO : add button for like! --}}
+
+<form action="/recipe/{{recipeDetail._id}}" method="POST">
+{{!-- <input type="hidden" value="{{_id}}" name="favRecipe"> --}}
+<button type="submit" value="{{recipeDetail._id}}"  name="favRecipe" >like it!</button>
+</form>

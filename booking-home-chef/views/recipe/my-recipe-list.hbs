@@ -1,0 +1,9 @@
+<hr>
+<h3>List of Recipes</h3>
+<br>
+{{#each recipes}}
+<h3>{{this.name}}</h3>
+<span>{{this.dietary}} |</span>
+<a href="/recipe/{{this.id}}">see full recipe</a>
+<hr>
+{{/each}}

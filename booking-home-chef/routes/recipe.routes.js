@@ -4,12 +4,13 @@ const Recipe = require("../models/Recipe.model");
 const User = require("../models/User.model");
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
+const Favorite = require("../models/Favorite.model");
 
 //list of all recipe
 router.get("/recipe",isLoggedIn,(req,res,next)=>{
   Recipe.find()
   .then(recipesArr=>{
-    console.log(recipesArr);
+  
     res.render("recipe/recipe-list",{recipes : recipesArr})
   })
   .catch(e=>console.log("error to find  list of recipes",e))
@@ -34,7 +35,7 @@ router.post("/recipe/create-recipe",isLoggedIn, (req, res, next) => {
 
   Recipe.create( { name, ingredient, description, dietary,owner })
     .then((recipeFromDB) => {
-      console.log(recipeFromDB);
+  
       res.redirect("/recipe");
     })
     .catch(err => {
@@ -53,8 +54,9 @@ router.get("/recipe/:recipeId",isLoggedIn,(req,res,next)=>{
 
   Recipe.findById(recipeId)
   .then(recipeDetail=>{
+
     const isTheSame= ownerId ==recipeDetail.owner;
-    res.render("recipe/recipe-detail",{recipeDetail,isTheSame})
+    res.render("recipe/recipe-detail",{recipeDetail,isTheSame,ownerId})
   })
   .catch(e=>console.log("error to find detail of recipe",e))
 })
@@ -70,7 +72,7 @@ router.get('/recipe/:recipeId/edit',isLoggedIn, (req, res, next) => {
 });
 
 //edit recipe process
-router.post('/recipe/:recipeId/edit', (req, res, next) => {
+router.post('/recipe/:recipeId/edit',isLoggedIn, (req, res, next) => {
   const { recipeId } = req.params;
   const { name, ingredient, description, dietary } = req.body;
 
@@ -94,6 +96,59 @@ router.post('/recipe/:recipeId/delete',isLoggedIn, (req, res, next) => {
 });
 
 
+//Favorite behavior
+router.post('/recipe/:recipeId',isLoggedIn, (req, res, next) => {
+
+  const newFavorite={
+    currentUser : req.session.user._id,
+      favRecipe : req.params.recipeId
+      }
+    
+    
+    
+      Favorite.find( {favRecipe: {_id: req.params.recipeId}})
+      .then(myFavRecipeArr =>{
+        // console.log(myFavRecipeArr);
+        if(!myFavRecipeArr.length){
+          return Favorite.create(newFavorite)
+        }else{
+          console.log(myFavRecipeArr[0]._id);
+          return Favorite.findByIdAndDelete(myFavRecipeArr[0]._id)
+        }
+      })
+      .then(()=>{
+        res.redirect(`/recipe/${req.params.recipeId}`)
+      })
+        .catch(error => next(error));
+
+
+
+
+
+
+
+
+
+
+  // const newFavorite={
+  //   currentUser : req.session.user._id,
+  //   favRecipe : req.params.recipeId
+  // }
+ 
+  // if(newFavorite.favRecipe.includes(recipeId)){
+  //   Favorite.findByIdAndDelete(recipeId)
+  //   .then(()=>{
+  //     res.redirect(`/recipe`)
+  //   })
+  //     .catch(error => next(error));
+  // } else {
+  //   Favorite.create(newFavorite)
+  //   .then(()=>{
+  //     res.redirect(`/recipe`)
+  //   })
+  //   .catch(error => next(error));
+  // }
+});
 
 
 
