@@ -21,9 +21,16 @@
 
 {{/if}}
 
-{{!-- ///TODO : add button for like! --}}
+{{#if likeIt}}
 
 <form action="/recipe/{{recipeDetail._id}}" method="POST">
 {{!-- <input type="hidden" value="{{_id}}" name="favRecipe"> --}}
 <button type="submit" value="{{recipeDetail._id}}"  name="favRecipe" >like it!</button>
 </form>
+
+{{else}}
+<form action="/recipe/{{recipeDetail._id}}" method="POST">
+{{!-- <input type="hidden" value="{{_id}}" name="favRecipe"> --}}
+<button type="submit" value="{{recipeDetail._id}}"  name="favRecipe" >Unlike it!</button>
+</form>
+{{/if}}

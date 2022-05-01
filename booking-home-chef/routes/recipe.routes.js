@@ -7,19 +7,19 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 const Favorite = require("../models/Favorite.model");
 
 //list of all recipe
-router.get("/recipe",isLoggedIn,(req,res,next)=>{
+router.get("/recipe", isLoggedIn, (req, res, next) => {
   Recipe.find()
-  .then(recipesArr=>{
-  
-    res.render("recipe/recipe-list",{recipes : recipesArr})
-  })
-  .catch(e=>console.log("error to find  list of recipes",e))
+    .then(recipesArr => {
+
+      res.render("recipe/recipe-list", { recipes: recipesArr })
+    })
+    .catch(e => console.log("error to find  list of recipes", e))
 })
 
 
 
 //create new recipe
-router.get("/recipe/create-recipe",isLoggedIn, (req, res, next) => {
+router.get("/recipe/create-recipe", isLoggedIn, (req, res, next) => {
 
   res.render("recipe/create-recipe")
 })
@@ -28,14 +28,14 @@ router.get("/recipe/create-recipe",isLoggedIn, (req, res, next) => {
 
 
 // CREATE: process form
-router.post("/recipe/create-recipe",isLoggedIn, (req, res, next) => {
+router.post("/recipe/create-recipe", isLoggedIn, (req, res, next) => {
   const owner = req.session.user._id
   const { name, ingredient, description, dietary } = req.body
-  console.log( { name, ingredient, description, dietary });
+  console.log({ name, ingredient, description, dietary });
 
-  Recipe.create( { name, ingredient, description, dietary,owner })
+  Recipe.create({ name, ingredient, description, dietary, owner })
     .then((recipeFromDB) => {
-  
+
       res.redirect("/recipe");
     })
     .catch(err => {
@@ -48,23 +48,31 @@ router.post("/recipe/create-recipe",isLoggedIn, (req, res, next) => {
 
 
 // recipe detail
-router.get("/recipe/:recipeId",isLoggedIn,(req,res,next)=>{
+router.get("/recipe/:recipeId", isLoggedIn, (req, res, next) => {
   const ownerId = req.session.user._id;
-  const{recipeId} = req.params;
+  const { recipeId } = req.params;
+  let likeIt;
 
-  Recipe.findById(recipeId)
-  .then(recipeDetail=>{
-
-    const isTheSame= ownerId ==recipeDetail.owner;
-    res.render("recipe/recipe-detail",{recipeDetail,isTheSame,ownerId})
-  })
-  .catch(e=>console.log("error to find detail of recipe",e))
+  Favorite.find({ favRecipe: { _id: recipeId } })
+    .then(myFavRecipeArr => {
+      if (!myFavRecipeArr.length) {
+        likeIt = true
+      } else {
+        likeIt = false
+      }
+      return Recipe.findById(recipeId)
+    })
+    .then(recipeDetail => {
+      const isTheSame = ownerId == recipeDetail.owner;
+      res.render("recipe/recipe-detail", { recipeDetail, isTheSame, ownerId, likeIt })
+    })
+    .catch(e => console.log("error to find detail of recipe", e))
 })
 
 
 //edit recipe
-router.get('/recipe/:recipeId/edit',isLoggedIn, (req, res, next) => {
-  const{recipeId} = req.params;
+router.get('/recipe/:recipeId/edit', isLoggedIn, (req, res, next) => {
+  const { recipeId } = req.params;
 
   Recipe.findById(recipeId)
     .then(recipeDetail => res.render('recipe/edit-recipe', recipeDetail))
@@ -72,7 +80,7 @@ router.get('/recipe/:recipeId/edit',isLoggedIn, (req, res, next) => {
 });
 
 //edit recipe process
-router.post('/recipe/:recipeId/edit',isLoggedIn, (req, res, next) => {
+router.post('/recipe/:recipeId/edit', isLoggedIn, (req, res, next) => {
   const { recipeId } = req.params;
   const { name, ingredient, description, dietary } = req.body;
 
@@ -86,8 +94,8 @@ router.post('/recipe/:recipeId/edit',isLoggedIn, (req, res, next) => {
 
 //delete recipe
 
-router.post('/recipe/:recipeId/delete',isLoggedIn, (req, res, next) => {
-  const{recipeId} = req.params;
+router.post('/recipe/:recipeId/delete', isLoggedIn, (req, res, next) => {
+  const { recipeId } = req.params;
   const ownerId = req.session.user._id;
   Recipe.findByIdAndDelete(recipeId)
     .then(() => res.redirect(`/user/${ownerId}/my-recipes`))
@@ -97,57 +105,23 @@ router.post('/recipe/:recipeId/delete',isLoggedIn, (req, res, next) => {
 
 
 //Favorite behavior
-router.post('/recipe/:recipeId',isLoggedIn, (req, res, next) => {
+router.post('/recipe/:recipeId', isLoggedIn, (req, res, next) => {
 
-  const newFavorite={
-    currentUser : req.session.user._id,
-      favRecipe : req.params.recipeId
-      }
-    
-    
-    
-      Favorite.find( {favRecipe: {_id: req.params.recipeId}})
-      .then(myFavRecipeArr =>{
-        // console.log(myFavRecipeArr);
-        if(!myFavRecipeArr.length){
-          return Favorite.create(newFavorite)
-        }else{
-          console.log(myFavRecipeArr[0]._id);
-          return Favorite.findByIdAndDelete(myFavRecipeArr[0]._id)
-        }
-      })
-      .then(()=>{
-        res.redirect(`/recipe/${req.params.recipeId}`)
-      })
-        .catch(error => next(error));
+  const newFavorite = {
+    currentUser: req.session.user._id,
+    favRecipe: req.params.recipeId
+  }
 
+  Favorite.find({ favRecipe: { _id: req.params.recipeId } })
+    .then(myFavRecipeArr => {
+      if (!myFavRecipeArr.length) return Favorite.create(newFavorite)
+      else return Favorite.findByIdAndDelete(myFavRecipeArr[0]._id)
+    })
+    .then(() => {
+      res.redirect(`/recipe/${req.params.recipeId}`)
+    })
+    .catch(error => next(error));
 
-
-
-
-
-
-
-
-
-  // const newFavorite={
-  //   currentUser : req.session.user._id,
-  //   favRecipe : req.params.recipeId
-  // }
- 
-  // if(newFavorite.favRecipe.includes(recipeId)){
-  //   Favorite.findByIdAndDelete(recipeId)
-  //   .then(()=>{
-  //     res.redirect(`/recipe`)
-  //   })
-  //     .catch(error => next(error));
-  // } else {
-  //   Favorite.create(newFavorite)
-  //   .then(()=>{
-  //     res.redirect(`/recipe`)
-  //   })
-  //   .catch(error => next(error));
-  // }
 });
 
 
