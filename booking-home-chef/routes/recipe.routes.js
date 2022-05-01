@@ -2,12 +2,12 @@ const router = require("express").Router();
 
 const Recipe = require("../models/Recipe.model");
 const User = require("../models/User.model");
-const isLoggedOut = require("../middleware/isLoggedOut");
-const isLoggedIn = require("../middleware/isLoggedIn");
 const Favorite = require("../models/Favorite.model");
 
+
+
 //list of all recipe
-router.get("/recipe", isLoggedIn, (req, res, next) => {
+router.get("/recipe",(req, res, next) => {
   Recipe.find()
     .then(recipesArr => {
 
@@ -17,18 +17,18 @@ router.get("/recipe", isLoggedIn, (req, res, next) => {
 })
 
 
-
+// TODO : add middleware to limit Normal user
 //create new recipe
-router.get("/recipe/create-recipe", isLoggedIn, (req, res, next) => {
+router.get("/recipe/create-recipe",(req, res, next) => {
 
   res.render("recipe/create-recipe")
 })
 
 
 
-
+// TODO : add middleware to limit Normal user
 // CREATE: process form
-router.post("/recipe/create-recipe", isLoggedIn, (req, res, next) => {
+router.post("/recipe/create-recipe",(req, res, next) => {
   const owner = req.session.user._id
   const { name, ingredient, description, dietary } = req.body
   console.log({ name, ingredient, description, dietary });
@@ -48,7 +48,7 @@ router.post("/recipe/create-recipe", isLoggedIn, (req, res, next) => {
 
 
 // recipe detail
-router.get("/recipe/:recipeId", isLoggedIn, (req, res, next) => {
+router.get("/recipe/:recipeId", (req, res, next) => {
   const ownerId = req.session.user._id;
   const { recipeId } = req.params;
   let likeIt;
@@ -70,8 +70,12 @@ router.get("/recipe/:recipeId", isLoggedIn, (req, res, next) => {
 })
 
 
+
+
+
+// TODO : add middleware to limit Normal user
 //edit recipe
-router.get('/recipe/:recipeId/edit', isLoggedIn, (req, res, next) => {
+router.get('/recipe/:recipeId/edit', (req, res, next) => {
   const { recipeId } = req.params;
 
   Recipe.findById(recipeId)
@@ -79,8 +83,10 @@ router.get('/recipe/:recipeId/edit', isLoggedIn, (req, res, next) => {
     .catch(error => next(error));
 });
 
+
+
 //edit recipe process
-router.post('/recipe/:recipeId/edit', isLoggedIn, (req, res, next) => {
+router.post('/recipe/:recipeId/edit', (req, res, next) => {
   const { recipeId } = req.params;
   const { name, ingredient, description, dietary } = req.body;
 
@@ -92,9 +98,10 @@ router.post('/recipe/:recipeId/edit', isLoggedIn, (req, res, next) => {
 
 
 
-//delete recipe
 
-router.post('/recipe/:recipeId/delete', isLoggedIn, (req, res, next) => {
+// TODO : add middleware to limit Normal user
+//delete recipe
+router.post('/recipe/:recipeId/delete',(req, res, next) => {
   const { recipeId } = req.params;
   const ownerId = req.session.user._id;
   Recipe.findByIdAndDelete(recipeId)
@@ -104,8 +111,11 @@ router.post('/recipe/:recipeId/delete', isLoggedIn, (req, res, next) => {
 });
 
 
+
+
+
 //Favorite behavior
-router.post('/recipe/:recipeId', isLoggedIn, (req, res, next) => {
+router.post('/recipe/:recipeId', (req, res, next) => {
 
   const newFavorite = {
     currentUser: req.session.user._id,

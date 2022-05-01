@@ -1,18 +1,27 @@
 <h1>Sign up</h1>
 <a href="/auth/signin">Sign in</a>
-<hr>
+<hr />
 <form action="/auth/signup" method="POST">
-   <label> Email
-      <input type="email" name="email">
-   </label>
-   <label> Password
-      <input type="password" name="password">
-   </label>
-   <p>if you have an account, clik <a href="/auth/signin">here</a> </p>
+  <label>
+    Email
+    <input type="email" name="email" />
+  </label>
+  <label>
+    Password
+    <input type="password" name="password" />
+  </label>
+  <label >As Costumer
+  <input type="radio" name="isProfilePublic" value="false" required >
+  </label>
+<label >As Chef
+  <input type="radio"  name="isProfilePublic" value="true" >
+  </label>
 
-   <button type="submit">Create account</button>
+  <p>if you have an account, clik <a href="/auth/signin">here</a> </p>
+
+  <button type="submit">Create account</button>
 </form>
 
 {{#if errorMessage}}
-   {{errorMessage}}
+  {{errorMessage}}
 {{/if}}

@@ -1,0 +1,54 @@
+ <h1>
+   Profile Setting
+ </h1>
+
+<form action="/user/{{_id}}/settings" method="POST">
+
+{{!-- /// add image here >>>> image_Url ,,and having an alternative placeholder image,,,writing an if for it --}}
+  <div class="row">
+    <div class="col">
+      <label>Name
+        <br>
+      <input
+        name="name"
+        type="text"
+        class="form-control"
+        placeholder="Write your name here"
+        aria-label="user name"
+        required
+      />
+      </label>
+    </div>
+  </div>
+  <br>
+  <label for="floatingTextarea"> Specialities</label>
+ <div class="form-floating">
+
+    <textarea
+      name="specialities"
+      class="form-control"
+      placeholder="Write your Specialities Here"
+      id="floatingTextarea"
+    ></textarea>
+
+  </div>
+<br>
+  <label >About me</label>
+ <div class="form-floating">
+
+    <textarea
+      name="aboutMe"
+      class="form-control"
+      placeholder="About me...."
+    
+    ></textarea>
+
+  </div>
+  <button>Save Changes</button>
+
+</form>
+
+
+
+
+

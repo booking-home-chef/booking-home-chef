@@ -1,6 +1,7 @@
 <hr>
-<h1>Welcome To your Profile!</h1>
-<h4>{{email}}</h4>
+
+<h2>{{name}}</h2>
+<h4>Welcome To your Profile!</h4>
 <a href="/">back to the home page</a>
 <br>
 <br>
@@ -9,17 +10,20 @@
 <a href="/recipe">list of recipes</a>
 </div>
 <br>
+{{#if isProfilePublic}}
 <div>
 <a href="/user/{{_id}}/my-recipes">My recipes</a>
 </div>
+{{/if}}
 <br>
 <div>
 <a href="/user/{{_id}}/my-favorite-recipes">Favorite Recipes</a>
 </div>
 <br>
+{{#if isProfilePublic}}
 <div>
 <a href="/recipe/create-recipe">Create new recipe!</a>
 </div>
-
+{{/if}}
 
 
