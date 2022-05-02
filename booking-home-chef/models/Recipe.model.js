@@ -7,14 +7,13 @@ const recipeSchema = new Schema(
     type: {
         type: [String],
         enum: ["starter", "main dish", "dessert", "cocktail piece"],
-        default: [""]
     },
     ingredient: String,
     description: String,
     dietary: {
       type: [String],
       enum: ["Lactose intolerance", "Gluten intolerance or sensitivity", "Vegetarian", "Vegan", "Kosher", "Keto", "Diabetes", "Dairy-free", "Low carb", "Food allergies"],
-      default: "",
+      default:"Ask the chef"
     },
     owner: {
       type: Schema.Types.ObjectId,
