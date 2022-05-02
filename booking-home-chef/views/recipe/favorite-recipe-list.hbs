@@ -1,10 +1,10 @@
  <hr>
 <h3>List of My Favorite Recipes</h3>
 <br>
-{{#each recipes}}
-<h3>{{favRecipe.name}}</h3>
-<span>{{favRecipe.dietary}} |</span>
-<a href="/recipe/{{favRecipe.id}}">see full recipe</a>
+{{#each favRecipesArr}}
+<h3>{{this.favRecipe.name}}</h3>
+<img src="" alt="">
+<a href="/recipe/{{this.favRecipe._id}}">see full recipe</a>
 <hr>
 {{/each}}
 

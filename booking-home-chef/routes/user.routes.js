@@ -55,8 +55,7 @@ router.get('/:userId/my-favorite-recipes',(req, res, next) => {
 Favorite.find({ currentUser: {  _id: userId } })
 .populate("favRecipe")
 .then((favRecipesArr)=>{
-  
-  res.render("recipe/favorite-recipe-list",{recipes : favRecipesArr,userId})
+  res.render("recipe/favorite-recipe-list",{favRecipesArr : favRecipesArr,userId})
 })
 .catch(error => next(error));
 

@@ -15,6 +15,7 @@ const recipeSchema = new Schema(
       enum: ["Lactose intolerance", "Gluten intolerance or sensitivity", "Vegetarian", "Vegan", "Kosher", "Keto", "Diabetes", "Dairy-free", "Low carb", "Food allergies"],
       default:"Ask the chef"
     },
+    image_url: String,
     owner: {
       type: Schema.Types.ObjectId,
       ref: "User",
