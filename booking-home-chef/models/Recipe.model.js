@@ -12,7 +12,7 @@ const recipeSchema = new Schema(
     description: String,
     dietary: {
       type: [String],
-      enum: ["Lactose intolerance", "Gluten intolerance or sensitivity", "Vegetarian", "Vegan", "Kosher", "Keto", "Diabetes", "Dairy-free", "Low carb", "Food allergies"],
+      enum: ["Lactose intolerance", "Gluten intolerance or sensitivity", "Vegetarian", "Vegan", "Kosher", "Keto", "Diabetes", "Dairy-free", "Low carb", "Food allergies","Ask the chef"],
       default:"Ask the chef"
     },
     image_url: String,
