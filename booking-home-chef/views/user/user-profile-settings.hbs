@@ -1,58 +1,122 @@
- <h1>
-   Profile Setting
- </h1>
-
+<h1>
+  Profile Setting
+</h1>
+{{#if name}}
 <form action="/user/{{_id}}/settings" method="POST">
 
-{{!-- /// add image here >>>> image_Url ,,and having an alternative placeholder image,,,writing an if for it --}}
-
+  {{#if isProfilePublic}}
+  {{!-- /// add image here >>>> image_Url ,,and having an alternative placeholder image,,,writing an if for it --}}
+  <h2>Set your informations Chef</h2>
   <label for="img">Upload your profile picture</label>
   <input type="file" id="img" name="image_Url" accept="image/*">
-  
+
   <div class="row">
     <div class="col">
       <label>Name
         <br>
-      <input
-        name="name"
-        type="text"
-        class="form-control"
-        placeholder="Write your name here"
-        aria-label="user name"
-        required
-      />
+        <input name="name" type="text" class="form-control" value="{{name}}" aria-label="user name"
+          required />
       </label>
     </div>
   </div>
   <br>
   <label for="floatingTextarea"> Specialities</label>
- <div class="form-floating">
+  <div class="form-floating">
 
-    <textarea
-      name="specialities"
-      class="form-control"
-      placeholder="Write your Specialities Here"
-      id="floatingTextarea"
-    ></textarea>
+    <textarea name="specialities" class="form-control" value="{{specialities}}"
+      id="floatingTextarea"></textarea>
 
   </div>
-<br>
-  <label >About me</label>
- <div class="form-floating">
+  <br>
+  <label>Share us your catch phrase:</label>
+  <div class="form-floating">
 
-    <textarea
-      name="aboutMe"
-      class="form-control"
-      placeholder="About me...."
-    
-    ></textarea>
+    <textarea name="catchPhrase" class="form-control" value="{{catchPhrase}}"></textarea>
 
   </div>
-  <button>Save Changes</button>
+  <br>
+  <label>About me</label>
+  <div class="form-floating">
+
+    <textarea name="aboutMe" class="form-control" value="{{aboutMe}}"></textarea>
+
+  </div>
+  {{else}}
+    {{!-- /// add image here >>>> image_Url ,,and having an alternative placeholder image,,,writing an if for it --}}
+  <h2>Set your informations</h2>
+  <label for="img">Upload your profile picture</label>
+  <input type="file" id="img" name="image_Url" accept="image/*">
+
+  <div class="row">
+    <div class="col">
+      <label>Name
+        <br>
+        <input name="name" type="text" class="form-control" value="{{name}}" aria-label="user name"
+          required />
+      </label>
+    </div>
+    {{/if}}
+    <button>Save Changes</button>
 
 </form>
 
 
+{{else}}
+<form action="/user/{{_id}}/settings" method="POST">
 
+  {{#if isProfilePublic}}
+  {{!-- /// add image here >>>> image_Url ,,and having an alternative placeholder image,,,writing an if for it --}}
+  <h2>Set your informations Chef</h2>
+  <label for="img">Upload your profile picture</label>
+  <input type="file" id="img" name="image_Url" accept="image/*">
 
+  <div class="row">
+    <div class="col">
+      <label>Name
+        <br>
+        <input name="name" type="text" class="form-control" placeholder="Write your name here" aria-label="user name"
+          required />
+      </label>
+    </div>
+  </div>
+  <br>
+  <label for="floatingTextarea"> Specialities</label>
+  <div class="form-floating">
 
+    <textarea name="specialities" class="form-control" placeholder="Write your Specialities Here"
+      id="floatingTextarea"></textarea>
+
+  </div>
+  <br>
+  <label>Share us your catch phrase:</label>
+  <div class="form-floating">
+
+    <textarea name="catchPhrase" class="form-control" placeholder="Cooking is live...."></textarea>
+
+  </div>
+  <br>
+  <label>About me</label>
+  <div class="form-floating">
+
+    <textarea name="aboutMe" class="form-control" placeholder="About me...."></textarea>
+
+  </div>
+  {{else}}
+    {{!-- /// add image here >>>> image_Url ,,and having an alternative placeholder image,,,writing an if for it --}}
+  <h2>Set your informations</h2>
+  <label for="img">Upload your profile picture</label>
+  <input type="file" id="img" name="image_Url" accept="image/*">
+
+  <div class="row">
+    <div class="col">
+      <label>Name
+        <br>
+        <input name="name" type="text" class="form-control" placeholder="Write your name here" aria-label="user name"
+          required />
+      </label>
+    </div>
+    {{/if}}
+    <button>Save Changes</button>
+
+</form>
+{{/if}}
