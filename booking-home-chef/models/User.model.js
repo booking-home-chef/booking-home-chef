@@ -16,9 +16,9 @@ const userSchema = new Schema(
     name : String,
     specialities: String,
     image_Url:String,
+    catchPhrase:String,
     aboutMe: String,
     isProfilePublic : Boolean
-    
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
