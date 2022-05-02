@@ -1,5 +1,16 @@
-<img src="{{chef.image_Url}}" alt="" class="profile-image">
+<img src="{{chefsDet.image_Url}}" alt="" class="profile-image">
 <br>
-<h2>Chef {{chef.email}}</h2>
-<span>{{chef.specialities}}</span>
-<p>{{chef.aboutMe}}</p>
+<h2>Chef {{chefsDet.name}}</h2>
+<span>{{cchefsDet.specialities}}</span>
+<p>{{chefsDet.aboutMe}}</p>
+<br>
+<hr>
+<br>
+<h2>List of Chef {{chefsDet.name}} Recipes </h2>
+{{#each recipes}}
+<br>
+<h3>{{this.name}}</h3>
+<span>{{this.dietary}} |</span>
+<a href="/recipe/{{this.id}}">see full recipe</a>
+<hr>
+{{/each}}

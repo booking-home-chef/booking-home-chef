@@ -65,7 +65,7 @@ router.get("/recipe/:recipeId", (req, res, next) => {
       .populate("owner")
       .then(recipeDetail => {
         console.log(recipeDetail.owner);
-        const isTheSame = ownerId == recipeDetail.owner;
+        const isTheSame = ownerId == recipeDetail.owner._id;
   
         res.render("recipe/recipe-detail", { recipeDetail, isTheSame, ownerId, likeIt})
       })

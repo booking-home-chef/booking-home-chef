@@ -19,15 +19,7 @@ router.get("/",(req,res,next)=>{
   .catch(e=>console.log("error to find  list of recipes",e))
 })
 
-//get chef details
-router.get("/chef/:chefId",(req,res,next)=>{
-  User.findById(req.params.chefId)
-    .then(chefDetails=> {
-      console.log(chefDetails);
-      res.render("chef/chef-details",{chef:chefDetails})
-    })
-    .catch()
-})
+
 
 
 module.exports = router;

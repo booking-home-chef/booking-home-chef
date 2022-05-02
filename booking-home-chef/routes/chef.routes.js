@@ -5,15 +5,29 @@ const User = require("../models/User.model");
 const router = require("express").Router();
 
 
-//get chef details
+
 router.get("/:chefId",(req,res,next)=>{
+
   User.findById(req.params.chefId)
-    .then(chefDetails=> {
-      console.log(chefDetails);
-      res.render("chef/chef-details",{chef:chefDetails})
-    })
-    .catch()
+  .then(chefsDet=>{
+    Recipe.find({owner : {_id : req.params.chefId}}) 
+    .populate("owner")
+    .then((chefsRecipesArr=>{
+      res.render("chef/chef-details",{recipes :chefsRecipesArr , chefsDet})
+    }))
+  })
+.catch(e=>console.log((e)))
 })
+
+
+
+
+
+
+
+
+
+
 
 
 module.exports = router;
