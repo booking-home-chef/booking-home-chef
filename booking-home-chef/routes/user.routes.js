@@ -2,47 +2,61 @@ const router = require("express").Router();
 
 const Recipe = require("../models/Recipe.model");
 const User = require("../models/User.model");
-const isLoggedOut = require("../middleware/isLoggedOut");
-const isLoggedIn = require("../middleware/isLoggedIn");
 const Favorite = require("../models/Favorite.model");
 
 
 
-//create user
-router.get("/:userId", (req, res, next) => {
-  const { userId } = req.params
+
+//Set the user as a Chef
+router.get("/:userId/settings",(req, res, next)=>{
+  const {userId} = req.params
+  console.log(userId);
   User.findById(userId)
-    .then(user => {
-      console.log(req.session.user);
-      res.render("user/user-profile", user);
+    .then(userInfo=> {
+      console.log(userInfo)
+      res.render("user/user-profile-settings", userInfo)
     })
+    .catch(err=>console.log(`Error is ${err}`))
+})
 
-});
+// let image_Url = req.body.image_Url ? req.body.image_Url : "/image/placeholder.png";
 
+//Set the user as a Chef proccess
+router.post("/:userId/settings",(req, res, next)=>{
+  let image_Url = req.body.image_Url || "/images/placeholder.png";
+  const {userId} = req.params
+  const {name,specialities,aboutMe} = req.body;
 
-//my recipes /////issue!!!
-
-
-router.get("/:userId/my-recipes",isLoggedIn,(req,res,next)=>{
-  const  userId  = req.params.userId
-  Recipe.find( {owner: {_id: userId}} )
-  .then(recipesArr=>{
- 
-    res.render("recipe/recipe-list",{recipes : recipesArr})
-  })
-  .catch(e=>console.log("error to find  list of recipes",e))
+  User.findByIdAndUpdate(userId,{name,specialities,aboutMe,image_Url})
+    .then(userInfo=> {
+      console.log(userInfo)
+      res.redirect(`/user/${userId}`)
+    })
+    .catch(err=>console.log(`Error is ${err}`))
 })
 
 
 
 
-// //add to my favorite recipe
-router.get('/:userId/my-favorite-recipes',isLoggedIn, (req, res, next) => {
+// TODO : add middleware to limit Normal user
+//my recipes
+router.get("/:userId/my-recipes",(req,res,next)=>{
+  const  userId  = req.params.userId;
+  Recipe.find( {owner: {_id: userId}} )
+  .then(recipesArr=> res.render("recipe/recipe-list",{recipes : recipesArr,userId}))
+  .catch(e=>console.log("error to find  list of recipes",e))
+})
+
+
+
+ //add to my favorite recipe
+router.get('/:userId/my-favorite-recipes',(req, res, next) => {
+
 Favorite.find()
 .populate("favRecipe")
 .then((favRecipesArr)=>{
-  console.log(favRecipesArr);
-  res.render("recipe/favorite-recipe-list",{recipes : favRecipesArr})
+  const userId = req.params.userId
+  res.render("recipe/favorite-recipe-list",{recipes : favRecipesArr,userId})
 })
 .catch(error => next(error));
 
@@ -51,32 +65,19 @@ Favorite.find()
 
 
 
+//create user
+router.get("/:userId", (req, res, next) => {
+  const { userId } = req.params;
+  
+  User.findById(userId)
+    .then(user => {
+      console.log(user);
+      res.render("user/user-profile", user);
+    })
 
-// router.post('/:userId/my-favorite-recipes',isLoggedIn, (req, res, next) => {
-
-//   const newFavorite={
-//     currentUser : req.params.userId,
-//     favRecipe : req.body.favRecipe
-//   }
+});
 
 
-
-//   Favorite.find( {favRecipe: {_id: req.body.favRecipe}})
-//   .then(myFavRecipeArr =>{
-//     // console.log(myFavRecipeArr);
-//     if(!myFavRecipeArr.length){
-//       return Favorite.create(newFavorite)
-//     }else{
-//       console.log(myFavRecipeArr[0]._id);
-//       return Favorite.findByIdAndDelete(myFavRecipeArr[0]._id)
-//     }
-//   })
-//   .then(()=>{
-//     res.redirect(`/recipe`)
-//   })
-//     .catch(error => next(error));
-
-// });
 
 
 

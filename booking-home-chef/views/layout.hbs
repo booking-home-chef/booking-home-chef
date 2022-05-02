@@ -16,7 +16,7 @@
         <form action="/auth/logout" method="POST">
           <button>Logout</button>
         </form>
-        {{!-- <a href="/user/{{user._id}}">Your profile</a> --}}
+        <a href="/user/{{session.user._id}}">Your profile</a>
 
       {{else}}
         <a href="/auth/signup">Sign up</a>

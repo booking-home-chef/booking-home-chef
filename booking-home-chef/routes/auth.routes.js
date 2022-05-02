@@ -19,7 +19,7 @@ router.get("/signup", isLoggedOut, (req, res) => {
 });
 
 router.post("/signup", isLoggedOut, (req, res) => {
-  const { email, password } = req.body;
+  const { email, password,isProfilePublic} = req.body;
 
   if (!email) {
     return res.status(400).render("auth/signup", {
@@ -63,12 +63,13 @@ router.post("/signup", isLoggedOut, (req, res) => {
         return User.create({
           email,
           password: hashedPassword,
+          isProfilePublic
         });
       })
       .then((user) => {
-        // Bind the user to the session object
+
         req.session.user = user;
-        res.redirect(`/user/${user._id}`);
+        res.redirect(`/user/${user._id}/settings`);
       })
       .catch((error) => {
         if (error instanceof mongoose.Error.ValidationError) {
