@@ -1,15 +1,22 @@
-
 <hr>
 <br>
-<h3>List of Recipes</h3>
-<br>
-{{#each recipes}}
-<h3>{{this.name}}</h3>
-<span>{{this.dietary}} |</span>
-<a href="/recipe/{{this.id}}">see full recipe</a>
+<div>
+    <h3>List of Chefs</h3>
+    <br>
+    {{#each chefs}}
+    <h3>Chef {{this.email}}</h3>
+    {{!-- <span>{{this.aboutMe}} |</span> --}}
+    <a href="/chef/{{this.id}}">see more</a>
+    {{/each}}
+</div>
 <hr>
-{{/each}}
-
-
-
-             
+<div>
+    <h3>List of Recipes</h3>
+    <br>
+    {{#each recipes}}
+    <h3>{{this.name}}</h3>
+    <span>{{this.dietary}} |</span>
+    <a href="/recipe/{{this.id}}">see full recipe</a>
+    <hr>
+    {{/each}}
+</div>
