@@ -54,8 +54,9 @@ router.get("/recipe/:recipeId", (req, res, next) => {
   const { recipeId } = req.params;
   let likeIt;
 
-  Favorite.find({ favRecipe: { _id: recipeId } })
+  Favorite.find({ favRecipe: { _id: recipeId } , currentUser: {  _id: ownerId } })
     .then(myFavRecipeArr => {
+      console.log("FAAAAAAAAV",myFavRecipeArr);
       if (!myFavRecipeArr.length) {
         likeIt = true
       } else {
@@ -118,15 +119,17 @@ router.post('/recipe/:recipeId/delete',(req, res, next) => {
 //Favorite behavior
 router.post('/recipe/:recipeId', (req, res, next) => {
 
+  const ownerId = req.session.user._id;
   const newFavorite = {
     currentUser: req.session.user._id,
     favRecipe: req.params.recipeId
   }
 
-  Favorite.find({ favRecipe: { _id: req.params.recipeId } })
+  Favorite.find({ favRecipe: { _id: req.params.recipeId }, currentUser: {  _id: ownerId } })
     .then(myFavRecipeArr => {
-      if (!myFavRecipeArr.length) return Favorite.create(newFavorite)
-      else return Favorite.findByIdAndDelete(myFavRecipeArr[0]._id)
+      if (!myFavRecipeArr.length) {
+        return Favorite.create(newFavorite)
+      } else return Favorite.findByIdAndDelete(myFavRecipeArr[0]._id)
     })
     .then(() => {
       res.redirect(`/recipe/${req.params.recipeId}`)

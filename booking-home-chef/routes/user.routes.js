@@ -51,11 +51,11 @@ router.get("/:userId/my-recipes",(req,res,next)=>{
 
  //add to my favorite recipe
 router.get('/:userId/my-favorite-recipes',(req, res, next) => {
-
-Favorite.find()
+  const userId = req.params.userId
+Favorite.find({ currentUser: {  _id: userId } })
 .populate("favRecipe")
 .then((favRecipesArr)=>{
-  const userId = req.params.userId
+  
   res.render("recipe/favorite-recipe-list",{recipes : favRecipesArr,userId})
 })
 .catch(error => next(error));
