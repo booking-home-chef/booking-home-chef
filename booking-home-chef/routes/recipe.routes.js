@@ -55,18 +55,20 @@ router.get("/recipe/:recipeId", (req, res, next) => {
   let likeIt;
 
   Favorite.find({ favRecipe: { _id: recipeId } , currentUser: {  _id: ownerId } })
-    .then(myFavRecipeArr => {
-      console.log("FAAAAAAAAV",myFavRecipeArr);
+  .then(myFavRecipeArr => {
       if (!myFavRecipeArr.length) {
         likeIt = true
       } else {
         likeIt = false
       }
-      return Recipe.findById(recipeId)
-    })
-    .then(recipeDetail => {
-      const isTheSame = ownerId == recipeDetail.owner;
-      res.render("recipe/recipe-detail", { recipeDetail, isTheSame, ownerId, likeIt })
+      Recipe.findById(recipeId)
+      .populate("owner")
+      .then(recipeDetail => {
+        console.log(recipeDetail.owner);
+        const isTheSame = ownerId == recipeDetail.owner;
+  
+        res.render("recipe/recipe-detail", { recipeDetail, isTheSame, ownerId, likeIt})
+      })
     })
     .catch(e => console.log("error to find detail of recipe", e))
 })
