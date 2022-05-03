@@ -1,6 +1,10 @@
 
 <hr>
+{{#if recipeDetail.image_Url}}
 <img class="recipe-image" src="{{recipeDetail.image_Url}}" alt="">
+{{else}}
+<img class="recipe-image" src="/images/recipe-placeholder.jpg" alt="">
+{{/if}}
 <br>
 <h3>{{recipeDetail.name}}</h3>
 <h5>Ingredients : {{recipeDetail.ingredient}}</h5>
