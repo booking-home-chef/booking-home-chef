@@ -1,22 +1,32 @@
-<hr>
-<br>
+<hr />
+<br />
 <div>
-    <h3>List of Chefs</h3>
-    <br>
-    {{#each chefs}}
+  <h3>List of Chefs</h3>
+  <br />
+  {{#each chefs}}
+   {{#if image_Url}}
+      <img class="profile-image" src="{{this.image_Url}}" alt="" />
+    {{else}}
+      <img class="profile-image" src="/images/placeholder.png" alt="" />
+    {{/if}}
     <h3>Chef {{this.email}}</h3>
     {{!-- <span>{{this.aboutMe}} |</span> --}}
     <a href="/chef/{{this.id}}">see more</a>
-    {{/each}}
+  {{/each}}
 </div>
-<hr>
+<hr />
 <div>
-    <h3>List of Recipes</h3>
-    <br>
-    {{#each recipes}}
+  <h3>List of Recipes</h3>
+  <br />
+  {{#each recipes}}
+    {{#if image_Url}}
+      <img class="recipe-image" src="{{this.image_Url}}" alt="" />
+    {{else}}
+      <img class="recipe-image" src="/images/recipe-placeholder.jpg" alt="" />
+    {{/if}}
     <h3>{{this.name}}</h3>
     <span>{{this.dietary}} |</span>
     <a href="/recipe/{{this.id}}">see full recipe</a>
-    <hr>
-    {{/each}}
+    <hr />
+  {{/each}}
 </div>
