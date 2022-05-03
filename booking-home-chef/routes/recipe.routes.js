@@ -3,7 +3,7 @@ const router = require("express").Router();
 const Recipe = require("../models/Recipe.model");
 const User = require("../models/User.model");
 const Favorite = require("../models/Favorite.model");
-
+const uploadUserProfile = require("../upload/uploadUserProfile");
 
 
 //list of all recipe
@@ -18,7 +18,6 @@ router.get("/recipe",(req, res, next) => {
 })
 
 
-// TODO : add middleware to limit Normal user
 //create new recipe
 router.get("/recipe/create-recipe",(req, res, next) => {
   const userId =req.session.user._id
@@ -27,14 +26,19 @@ router.get("/recipe/create-recipe",(req, res, next) => {
 
 
 
-// TODO : add middleware to limit Normal user
 // CREATE: process form
-router.post("/recipe/create-recipe",(req, res, next) => {
+router.post("/recipe/create-recipe",uploadUserProfile.single('image_Url'),(req, res, next) => {
   const owner = req.session.user._id
   const { name, ingredient, description, dietary } = req.body
-  console.log({ name, ingredient, description, dietary });
+  let image_Url;
 
-  Recipe.create({ name, ingredient, description, dietary, owner })
+  if (req.file) {
+    image_Url = req.file.path.replace(/\\/g, '/').substring(6)
+  } else {
+    image_Url = "/images/recipe-placeholder.jpg"
+  }
+
+  Recipe.create({ name, ingredient, description, dietary, owner,image_Url })
     .then((recipeFromDB) => {
 
       res.redirect("/recipe");
@@ -64,7 +68,7 @@ router.get("/recipe/:recipeId", (req, res, next) => {
       Recipe.findById(recipeId)
       .populate("owner")
       .then(recipeDetail => {
-        console.log(recipeDetail.owner);
+        console.log("MMMMMMMMMMMMMMM",recipeDetail);
         const isTheSame = ownerId == recipeDetail.owner._id;
   
         res.render("recipe/recipe-detail", { recipeDetail, isTheSame, ownerId, likeIt})
@@ -77,7 +81,6 @@ router.get("/recipe/:recipeId", (req, res, next) => {
 
 
 
-// TODO : add middleware to limit Normal user
 //edit recipe
 router.get('/recipe/:recipeId/edit', (req, res, next) => {
   const { recipeId } = req.params;
@@ -90,11 +93,20 @@ router.get('/recipe/:recipeId/edit', (req, res, next) => {
 
 
 //edit recipe process
-router.post('/recipe/:recipeId/edit', (req, res, next) => {
+router.post('/recipe/:recipeId/edit',uploadUserProfile.single('image_Url'), (req, res, next) => {
   const { recipeId } = req.params;
   const { name, ingredient, description, dietary } = req.body;
+  
+  let image_Url;
 
-  Recipe.findByIdAndUpdate(recipeId, { name, ingredient, description, dietary })
+  if (req.file) {
+    image_Url = req.file.path.replace(/\\/g, '/').substring(6)
+  } else {
+    image_Url = "/images/recipe-placeholder.jpg"
+  }
+
+
+  Recipe.findByIdAndUpdate(recipeId, { name, ingredient, description, dietary,image_Url })
     .then(updatedRecipe => res.redirect(`/recipe/${recipeId}`))
     .catch(error => next(error));
 

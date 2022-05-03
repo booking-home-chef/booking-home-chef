@@ -1,4 +1,6 @@
-<form action="/recipe/{{_id}}/edit" method="POST">
+<form action="/recipe/{{_id}}/edit" method="POST" enctype="multipart/form-data">
+  <label for="img">Upload your recipe image</label>
+  <input type="file" id="img" name="image_Url"  accept="image/*" >
   <div class="row">
     <div class="col">
       <input

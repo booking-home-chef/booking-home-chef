@@ -1,7 +1,10 @@
 
 
 <h2>Create New Recipe</h2>
-<form action="/recipe/create-recipe" method="POST">
+<form action="/recipe/create-recipe" method="POST" enctype="multipart/form-data">
+  <label for="img">Upload your recipe image</label>
+  <input class="recipe-image" type="file" id="img" name="image_Url"  accept="image/*" >
+
   <div class="row">
     <div class="col">
       <input
