@@ -8,8 +8,15 @@ body {
 }
 
 
-a {
-  color: #00b7ff;
+.list-and-seemore a {
+  color:black;
+  text-decoration: none;
+  font-size: 1.4em;
+}
+.list-and-seemore-recipe a {
+  color:black;
+  text-decoration: none;
+  font-size: 1.4em;
 }
 
 h1 {
@@ -23,9 +30,11 @@ h1 {
 
 .profile-image{
   border-radius: 50%;
-  width: 100px;
+  width: 200px;
  
 }
+
+
 
 .recipe-image{
   width:400px;
@@ -135,6 +144,11 @@ height: 100px;
   margin-top: 70px;
 }
 
+.recipe-list-title{
+  font-weight: 700;
+  margin: 70px 0;
+}
+
 .my-favorite-title{
   
   margin: 30px 12px;
@@ -153,6 +167,49 @@ height: 100px;
  flex-direction: column;
 align-items: center;
 }
+
+
+.profile-header{
+  margin: 70px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-header div{
+  margin-top:53px;
+margin-left: 30px ;
+}
+
+
+.about-me{
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+.about-me p{
+  margin-left: 430px;
+  text-align: justify ;
+}
+.about-me h4{
+  margin-left: 430px;
+  font-weight: 500;
+}
+
+.contact-me{
+  text-decoration: none;
+  color: rgb(17, 17, 17);
+  text-align: center;
+  border: 2px solid goldenrod;
+  border-radius:5px;
+  padding: 8px 20px;
+}
+.contact-me:hover{
+  background-color: goldenrod;
+  color: white;
+}
+
+
 
 /* a {
   text-decoration: none;

@@ -1,24 +1,9 @@
- {{!-- <hr>
-<h3>List of My Favorite Recipes</h3>
-<br>
-{{#each favRecipesArr}}
-{{#if favRecipe.image_Url}}
-<img class="recipe-image" src="{{this.favRecipe.image_Url}}" alt="">
-{{else}}
-<img class="recipe-image" src="/images/recipe-placeholder.jpg" alt="">
-{{/if}}
-<h3>{{this.favRecipe.name}}</h3>
-<img src="" alt="">
-<a href="/recipe/{{this.favRecipe._id}}">see full recipe</a>
-<hr>
-{{/each}} --}}
-
 
 
 <div class="container">
     <div class="row list-of-recipes">
-<div class="list-and-seemore-recipe">
- <h1 class="my-favorite-title">My Favorite Recipes</h1>
+<div >
+ <h1 class="text-center recipe-list-title">My Favorite Recipes</h1>
 </div>
      {{#each favRecipesArr}}
   
