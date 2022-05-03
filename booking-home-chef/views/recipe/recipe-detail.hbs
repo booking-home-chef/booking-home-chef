@@ -9,14 +9,14 @@
 {{#if likeIt}}
 <form action="/recipe/{{recipeDetail._id}}" method="POST">
 <button class="heart" type="submit" value="{{recipeDetail._id}}"  name="favRecipe" >
-  <img src="/images/red-heart.png" alt="">
+  <img src="/images/gray-heart.png" alt="">
 </button>
 </form>
 
 {{else}}
 <form action="/recipe/{{recipeDetail._id}}" method="POST">
 <button class="heart" type="submit" value="{{recipeDetail._id}}"  name="favRecipe" >
-  <img src="/images/gray-heart.png" alt="">
+  <img src="/images/red-heart.png" alt="">
 </button>
 </form>
 {{/if}}
