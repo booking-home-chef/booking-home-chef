@@ -19,7 +19,6 @@ const recipeSchema = new Schema(
     owner: {
       type: Schema.Types.ObjectId,
       ref: "User",
-      default: ""
     }
   },
   {
