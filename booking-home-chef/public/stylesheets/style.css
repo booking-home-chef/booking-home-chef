@@ -1,7 +1,12 @@
+*{
+  margin: 0;
+}
+
 body {
-  padding: 50px;
+
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+
 
 a {
   color: #00b7ff;
@@ -9,6 +14,10 @@ a {
 
 h1 {
   color: 15px;
+}
+
+.navigation-bar-content{
+  display:flex;
 }
 
 
@@ -21,3 +30,141 @@ h1 {
 .recipe-image{
   width:400px;
 }
+
+
+.log-out{
+  margin-left: 10px;
+  border: none;
+  background-color:transparent;
+  color: white;
+ 
+}
+
+.card {
+  color: white;
+  background-color: rgb(37, 37, 37);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+
+  
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card-body h5{
+  font-size: 1.7em;
+  text-align: center;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.card-text-area{
+height: 100px;
+text-align: center;
+margin-bottom: 10px;
+}
+
+
+.list-and-seemore{
+  margin-top: 80px;
+display: flex;
+justify-content: space-between;
+}
+
+.list-and-seemore h1{
+margin-left: 20px;
+font-weight: 600;
+}
+
+
+.list-and-seemore a{
+  margin-top: 70px;
+}
+
+.card-text-area-recipes{
+height: 100px;
+  text-align: center;
+  margin-bottom: 10px;
+
+}
+
+.card-text-area-recipes h5{
+  font-size: 1.2em;
+  text-align: center;
+  margin-bottom: 10px;
+
+}
+
+.card-text-area-recipes p{
+  margin-top: 20px;
+
+}
+
+
+.list-of-recipes{
+  margin-bottom: 70px;
+}
+
+.col-of-recipes{
+  margin: 0 ;
+}
+
+.list-and-seemore-recipe{
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-and-seemore-recipe a{
+  margin-top: 70px;
+}
+
+.chefs-card-class{
+  margin: 70px 0;
+}
+
+
+#list-title{
+  font-weight: 700;
+  margin-top: 70px;
+}
+
+.my-favorite-title{
+  
+  margin: 30px 12px;
+}
+
+
+.heart{
+  border: none;
+  background-color: transparent;
+  
+}
+
+.image-and-heart{
+  margin-top: 80px;
+ display: flex;
+ flex-direction: column;
+align-items: center;
+}
+
+/* a {
+  text-decoration: none;
+  color: goldenrod;
+  text-align: center;
+  border: 2px solid goldenrod;
+  border-radius:5px;
+  padding: 8px 20px;
+}
+
+a:hover{
+  background-color: goldenrod;
+  color: white;
+} */
+

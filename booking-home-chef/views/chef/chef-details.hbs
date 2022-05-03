@@ -4,13 +4,22 @@
 <span>{{cchefsDet.specialities}}</span>
 <p>{{chefsDet.aboutMe}}</p>
 <br>
+<a href = "mailto:{{chefsDet.email}}" target="_blank">Contact the Chef</a>
 <hr>
 <br>
 <h2>List of Chef {{chefsDet.name}} Recipes </h2>
+
 {{#each recipes}}
 <br>
+{{#if this.image_Url}}
+<img class="recipe-image" src="{{this.image_Url}}" alt="">
+{{else}}
+<img class="recipe-image" src="/images/recipe-placeholder.jpg" alt="">
+{{/if}}
 <h3>{{this.name}}</h3>
 <span>{{this.dietary}} |</span>
 <a href="/recipe/{{this.id}}">see full recipe</a>
 <hr>
 {{/each}}
+
+

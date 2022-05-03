@@ -7,10 +7,10 @@ const router = require("express").Router();
 
 router.get("/",(req,res,next)=>{
   let chefs;
-  User.find({isProfilePublic : true}).limit(3)
+  User.find({isProfilePublic : true}).limit(4)
     .then(userArr=> {
       chefs = userArr
-      return Recipe.find().limit(6)
+      return Recipe.find().limit(4)
     })
     .then(recipesArr=>{
       console.log(chefs);

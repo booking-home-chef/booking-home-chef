@@ -1,10 +1,28 @@
 
-<hr>
+<div class="image-and-heart">
 {{#if recipeDetail.image_Url}}
 <img class="recipe-image" src="{{recipeDetail.image_Url}}" alt="">
 {{else}}
 <img class="recipe-image" src="/images/recipe-placeholder.jpg" alt="">
 {{/if}}
+
+{{#if likeIt}}
+<form action="/recipe/{{recipeDetail._id}}" method="POST">
+<button class="heart" type="submit" value="{{recipeDetail._id}}"  name="favRecipe" >
+  <img src="/images/red-heart.png" alt="">
+</button>
+</form>
+
+{{else}}
+<form action="/recipe/{{recipeDetail._id}}" method="POST">
+<button class="heart" type="submit" value="{{recipeDetail._id}}"  name="favRecipe" >
+  <img src="/images/gray-heart.png" alt="">
+</button>
+</form>
+{{/if}}
+
+</div>
+
 <br>
 <h3>{{recipeDetail.name}}</h3>
 <h5>Ingredients : {{recipeDetail.ingredient}}</h5>
@@ -29,16 +47,3 @@
 
 {{/if}}
 
-{{#if likeIt}}
-
-<form action="/recipe/{{recipeDetail._id}}" method="POST">
-{{!-- <input type="hidden" value="{{_id}}" name="favRecipe"> --}}
-<button type="submit" value="{{recipeDetail._id}}"  name="favRecipe" >like it!</button>
-</form>
-
-{{else}}
-<form action="/recipe/{{recipeDetail._id}}" method="POST">
-{{!-- <input type="hidden" value="{{_id}}" name="favRecipe"> --}}
-<button type="submit" value="{{recipeDetail._id}}"  name="favRecipe" >Unlike it!</button>
-</form>
-{{/if}}

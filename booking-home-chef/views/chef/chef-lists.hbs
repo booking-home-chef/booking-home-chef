@@ -1,19 +1,28 @@
-<div>
-  <h3>List of Chefs</h3>
-  <br />
-  {{#each chefs}}
+
+
+<div class="container">
+  <div class="row">
+ <h1 class="text-center" id="list-title">List of Chefs</h1>
+     {{#each chefs}}
+    <div class="col-lg-3 col-md-6 col-sm-12 chefs-card-class">
+<div class="card" style="width: 18rem;">
    {{#if image_Url}}
-      <img class="profile-image" src="{{this.image_Url}}" alt="" />
-    {{else}}
-      <img class="profile-image" src="/images/placeholder.png" alt="" />
-    {{/if}}
-    <h3>Chef {{email}}</h3>
-    <h4>{{catchPhrase}}</h4>
-     <a href="/chef/{{this.id}}">see more</a>
-     <br>
-     <br>
-    {{!-- <span>{{this.aboutMe}} |</span> --}}
-  {{/each}}
-<br>
-  <a href="/">Back Home</a>
+  <img src="{{this.image_Url}}" class="card-img-top" alt="...">
+{{else}}
+  <img src="/images/placeholder.png" class="card-img-top" alt="...">
+  {{/if}}
+  <div class="card-body">
+    <div class="card-text-area">
+ <h5 class="card-title">{{this.name}}</h5>
+    <p class="card-text">{{this.catchPhrase}}</p>
+    </div>
+   <div>
+
+    <a href="/chef/{{this.id}}" class="btn btn-light">see more</a>
+   </div>
+  </div>
 </div>
+    </div>
+    {{/each}}
+  </div>
+   </div>

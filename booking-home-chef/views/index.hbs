@@ -1,36 +1,110 @@
-<hr />
-<br />
-<div>
-  <h3>List of Chefs</h3>
-  <br />
-  {{#each chefs}}
+
+<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="10000">
+      <img src="/images/carousel/1.jpg" class="d-block w-100" alt="">
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <img src="/images/carousel/2.jpg" class="d-block w-100" alt="">
+    </div>
+    <div class="carousel-item">
+      <img src="/images/carousel/3.jpg" class="d-block w-100" alt="">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="list-and-seemore">
+ <h1>List of Chefs</h1>
+     <a href="/chef/chef-list">show more Chefs</a>
+    </div>
+     
+     {{#each chefs}}
+    <div class="col-lg-3 col-md-6 col-sm-12">
+   
+<div class="card" style="width: 18rem;">
    {{#if image_Url}}
-      <img class="profile-image" src="{{this.image_Url}}" alt="" />
-    {{else}}
-      <img class="profile-image" src="/images/placeholder.png" alt="" />
-    {{/if}}
-    <h3>Chef {{this.email}}</h3>
-    {{!-- <span>{{this.aboutMe}} |</span> --}}
-    <a href="/chef/{{this.id}}">see more</a>
-    <br>
-    <br>
-  {{/each}}
+  <img src="{{this.image_Url}}" class="card-img-top" alt="...">
+{{else}}
+  <img src="/images/placeholder.png" class="card-img-top" alt="...">
+  {{/if}}
+  <div class="card-body">
+    <div class="card-text-area">
+ <h5 class="card-title">{{this.name}}</h5>
+    <p class="card-text">{{this.catchPhrase}}</p>
+    </div>
+   <div>
+
+    <a href="/chef/{{this.id}}" class="btn btn-light">see more</a>
+   </div>
+  </div>
 </div>
-<br>
-<a href="/chef/chef-list">show more Chefs</a>
-<hr />
-<div>
-  <h3>List of Recipes</h3>
-  <br />
-  {{#each recipes}}
-    {{#if image_Url}}
-      <img class="recipe-image" src="{{this.image_Url}}" alt="" />
-    {{else}}
-      <img class="recipe-image" src="/images/recipe-placeholder.jpg" alt="" />
-    {{/if}}
-    <h3>{{this.name}}</h3>
-    <span>{{this.dietary}} |</span>
-    <a href="/recipe/{{this.id}}">see full recipe</a>
-    <hr />
-  {{/each}}
+    </div>
+    {{/each}}
+  </div>
+     <br>
+      <br>
+    <hr>
+   </div>
 </div>
+<div class="container">
+    <div class="row list-of-recipes">
+<div class="list-and-seemore-recipe">
+ <h1>List of Recipes</h1>
+ <a href="/recipe">show more recipe</a>
+</div>
+     {{#each recipes}}
+  
+    <div class="col-lg-3 col-md-6 col-sm-12 col-of-recipes">
+<div class="card" style="width: 19rem;">
+   {{#if image_Url}}
+  <img src="{{this.image_Url}}" class="card-img-top" style="width: 300px; height: 337px; object-fit: cover;" alt="...">
+{{else}}
+  <img src="/images/placeholder.png" class="card-img-top" style="width: 300px; height: 337px; object-fit: cover;" alt="...">
+  {{/if}}
+  <div class="card-body">
+    <div class="card-text-area-recipes">
+    <h5 class="card-title">{{this.name}}</h5>
+    <p class="card-text">{{this.dietary}} </p>
+    </div>
+    <a href="/recipe/{{this.id}}" class="btn btn-light">See full recipe</a>
+  </div>
+</div>
+    </div>
+    {{/each}}
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
