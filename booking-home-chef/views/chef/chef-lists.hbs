@@ -1,0 +1,19 @@
+<div>
+  <h3>List of Chefs</h3>
+  <br />
+  {{#each chefs}}
+   {{#if image_Url}}
+      <img class="profile-image" src="{{this.image_Url}}" alt="" />
+    {{else}}
+      <img class="profile-image" src="/images/placeholder.png" alt="" />
+    {{/if}}
+    <h3>Chef {{email}}</h3>
+    <h4>{{catchPhrase}}</h4>
+     <a href="/chef/{{this.id}}">see more</a>
+     <br>
+     <br>
+    {{!-- <span>{{this.aboutMe}} |</span> --}}
+  {{/each}}
+<br>
+  <a href="/">Back Home</a>
+</div>
