@@ -19,7 +19,7 @@ router.get("/recipe",(req, res, next) => {
 
 
 //create new recipe
-router.get("/recipe/create-recipe",(req, res, next) => {
+router.get("/create-recipe",(req, res, next) => {
   const userId =req.session.user._id
   res.render("recipe/create-recipe",{userId})
 })
@@ -27,7 +27,7 @@ router.get("/recipe/create-recipe",(req, res, next) => {
 
 
 // CREATE: process form
-router.post("/recipe/create-recipe",uploadUserProfile.single('image_Url'),(req, res, next) => {
+router.post("/create-recipe",uploadUserProfile.single('image_Url'),(req, res, next) => {
   const owner = req.session.user._id
   const { name, ingredient, description, dietary } = req.body
   let image_Url;
@@ -53,7 +53,7 @@ router.post("/recipe/create-recipe",uploadUserProfile.single('image_Url'),(req, 
 
 
 // recipe detail
-router.get("/recipe/:recipeId", (req, res, next) => {
+router.get("/:recipeId", (req, res, next) => {
   const ownerId = req.session.user._id;
   const { recipeId } = req.params;
   let likeIt;
@@ -82,7 +82,7 @@ router.get("/recipe/:recipeId", (req, res, next) => {
 
 
 //edit recipe
-router.get('/recipe/:recipeId/edit', (req, res, next) => {
+router.get('/:recipeId/edit', (req, res, next) => {
   const { recipeId } = req.params;
 
   Recipe.findById(recipeId)
@@ -93,7 +93,7 @@ router.get('/recipe/:recipeId/edit', (req, res, next) => {
 
 
 //edit recipe process
-router.post('/recipe/:recipeId/edit',uploadUserProfile.single('image_Url'), (req, res, next) => {
+router.post('/:recipeId/edit',uploadUserProfile.single('image_Url'), (req, res, next) => {
   const { recipeId } = req.params;
   const { name, ingredient, description, dietary } = req.body;
   
@@ -117,7 +117,7 @@ router.post('/recipe/:recipeId/edit',uploadUserProfile.single('image_Url'), (req
 
 // TODO : add middleware to limit Normal user
 //delete recipe
-router.post('/recipe/:recipeId/delete',(req, res, next) => {
+router.post('/:recipeId/delete',(req, res, next) => {
   const { recipeId } = req.params;
   const ownerId = req.session.user._id;
   Recipe.findByIdAndDelete(recipeId)
@@ -131,7 +131,7 @@ router.post('/recipe/:recipeId/delete',(req, res, next) => {
 
 
 //Favorite behavior
-router.post('/recipe/:recipeId', (req, res, next) => {
+router.post('/:recipeId', (req, res, next) => {
 
   const ownerId = req.session.user._id;
   const newFavorite = {
