@@ -7,27 +7,27 @@ const uploadUserProfile = require("../upload/uploadUserProfile");
 
 
 //list of all recipe
-router.get("/recipe",(req, res, next) => {
-  const userId =req.session.user._id
+router.get("/recipe", (req, res, next) => {
+  const userId = req.session.user._id
   Recipe.find()
     .then(recipesArr => {
 
-      res.render("recipe/recipe-list", { recipes: recipesArr,userId })
+      res.render("recipe/recipe-list", { recipes: recipesArr, userId })
     })
     .catch(e => console.log("error to find  list of recipes", e))
 })
 
 
 //create new recipe
-router.get("/create-recipe",(req, res, next) => {
-  const userId =req.session.user._id
-  res.render("recipe/create-recipe",{userId})
+router.get("/create-recipe", (req, res, next) => {
+  const userId = req.session.user._id
+  res.render("recipe/create-recipe", { userId })
 })
 
 
 
 // CREATE: process form
-router.post("/create-recipe",uploadUserProfile.single('image_Url'),(req, res, next) => {
+router.post("/create-recipe", uploadUserProfile.single('image_Url'), (req, res, next) => {
   const owner = req.session.user._id
   const { name, ingredient, description, dietary } = req.body
   let image_Url;
@@ -38,7 +38,7 @@ router.post("/create-recipe",uploadUserProfile.single('image_Url'),(req, res, ne
     image_Url = "/images/recipe-placeholder.jpg"
   }
 
-  Recipe.create({ name, ingredient, description, dietary, owner,image_Url })
+  Recipe.create({ name, ingredient, description, dietary, owner, image_Url })
     .then((recipeFromDB) => {
 
       res.redirect("/recipe");
@@ -58,21 +58,21 @@ router.get("/:recipeId", (req, res, next) => {
   const { recipeId } = req.params;
   let likeIt;
 
-  Favorite.find({ favRecipe: { _id: recipeId } , currentUser: {  _id: ownerId } })
-  .then(myFavRecipeArr => {
+  Favorite.find({ favRecipe: { _id: recipeId }, currentUser: { _id: ownerId } })
+    .then(myFavRecipeArr => {
       if (!myFavRecipeArr.length) {
         likeIt = true
       } else {
         likeIt = false
       }
       Recipe.findById(recipeId)
-      .populate("owner")
-      .then(recipeDetail => {
-        console.log("MMMMMMMMMMMMMMM",recipeDetail);
-        const isTheSame = ownerId == recipeDetail.owner._id;
-  
-        res.render("recipe/recipe-detail", { recipeDetail, isTheSame, ownerId, likeIt})
-      })
+        .populate("owner")
+        .then(recipeDetail => {
+          console.log("MMMMMMMMMMMMMMM", recipeDetail);
+          const isTheSame = ownerId == recipeDetail.owner._id;
+
+          res.render("recipe/recipe-detail", { recipeDetail, isTheSame, ownerId, likeIt })
+        })
     })
     .catch(e => console.log("error to find detail of recipe", e))
 })
@@ -93,10 +93,10 @@ router.get('/:recipeId/edit', (req, res, next) => {
 
 
 //edit recipe process
-router.post('/:recipeId/edit',uploadUserProfile.single('image_Url'), (req, res, next) => {
+router.post('/:recipeId/edit', uploadUserProfile.single('image_Url'), (req, res, next) => {
   const { recipeId } = req.params;
   const { name, ingredient, description, dietary } = req.body;
-  
+
   let image_Url;
 
   if (req.file) {
@@ -106,7 +106,7 @@ router.post('/:recipeId/edit',uploadUserProfile.single('image_Url'), (req, res, 
   }
 
 
-  Recipe.findByIdAndUpdate(recipeId, { name, ingredient, description, dietary,image_Url })
+  Recipe.findByIdAndUpdate(recipeId, { name, ingredient, description, dietary, image_Url })
     .then(updatedRecipe => res.redirect(`/recipe/${recipeId}`))
     .catch(error => next(error));
 
@@ -117,7 +117,7 @@ router.post('/:recipeId/edit',uploadUserProfile.single('image_Url'), (req, res, 
 
 // TODO : add middleware to limit Normal user
 //delete recipe
-router.post('/:recipeId/delete',(req, res, next) => {
+router.post('/:recipeId/delete', (req, res, next) => {
   const { recipeId } = req.params;
   const ownerId = req.session.user._id;
   Recipe.findByIdAndDelete(recipeId)
@@ -139,7 +139,7 @@ router.post('/:recipeId', (req, res, next) => {
     favRecipe: req.params.recipeId
   }
 
-  Favorite.find({ favRecipe: { _id: req.params.recipeId }, currentUser: {  _id: ownerId } })
+  Favorite.find({ favRecipe: { _id: req.params.recipeId }, currentUser: { _id: ownerId } })
     .then(myFavRecipeArr => {
       if (!myFavRecipeArr.length) {
         return Favorite.create(newFavorite)
@@ -151,6 +151,19 @@ router.post('/:recipeId', (req, res, next) => {
     .catch(error => next(error));
 
 });
+
+router.get("/search/:diatery", (req, res, next) => {
+  const dietary = req.params.diatery
+  Recipe.find()
+    .then(recipesArr => {
+      let recipesFiltered = recipesArr.filter((recipes) => {
+        return recipes.dietary.includes(dietary) }) //dietary.substring(0, 1).toUpperCase() + dietary.substring(1)
+    res.render("recipe/recipe-search", { recipes: recipesFiltered })
+    })
+  .catch(error => {
+    console.log("error getting a result from DB", error);
+  })
+})
 
 
 
