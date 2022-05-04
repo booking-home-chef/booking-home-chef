@@ -2,43 +2,37 @@
 until Monday:
 
 sepid:
-writing Users routs
-add views- list of views
-writing Recipes routs
-add views
+[x]  writing Users routs
+[x]add views- list of views
+[x]writing Recipes routs
+[x]add views
 
-sign up - sign in - log out //sepid
+[x]sign up - sign in - log out //sepid   <<<<<--------- Done!
 
 
-preparing Visulas  //sepid
+[X]preparing Visulas  //sepid        <<<<<---------First version wireframes Done!
 
 Jide:
-preparing seed file for recipes and chefs + Images
-
+[X]preparing seed file for recipes and chefs + Images...<<<<<--------- Done!
 
 
 
 
 after Monday: 
-cloudinary data
+[]cloudinary data
+[] user can edit his/her profile (upload avatar image, add username)
 bonus tasks :
 
--and when user want to reserve achef,, wee need to check is he free or not⇒yes
--we need another boolian
+[]-and when user want to reserve achef,, wee need to check is he free or not⇒yes
+[]-we need another boolian
 
 or maybe we can use api for calender ⇒ to look for YES agreed
 
--
-we need to show
-
-in current month
-
-is this chef free or nt
-
+[]-we need to show in current month is this chef free or nt
 or the days that he/she free
 
 Super Bonus:
-Add Bookings
+[]Add Bookings
 
 Super Super Bonus:
-email confirmation
+[]email confirmation
