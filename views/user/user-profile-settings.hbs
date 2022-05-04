@@ -1,15 +1,32 @@
-<h1>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<div class="container ">
+  <div class="row">
+    <div class="col-lg-4 ">
+<h1 style="  font-weight: 600;  margin-bottom: 30px;">
   Profile Setting
 </h1>
 {{#if name}}
 <form action="/user/{{_id}}/settings" method="POST" enctype="multipart/form-data">
 
   {{#if isProfilePublic}}
-  <h2>Set your informations Chef</h2>
-  <label for="img">Upload your profile picture</label>
-  <input type="file" id="img" name="image_Url"  accept="image/*" >
+  <h4>Set your informations</h4>
+  <br>
 
-  <div class="row">
+  <div class="input-group mb-3">
+    <p>Upload your profile picture</p>
+    <div>
+  <input type="file" class="form-control" name="image_Url"  accept="image/*" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+    </div>
+</div>
+
+
     <div class="col">
       <label>Name
         <br>
@@ -17,33 +34,38 @@
           required />
       </label>
     </div>
-  </div>
+  
   <br>
   <label for="floatingTextarea"> Specialities</label>
-  <div class="form-floating">
+  <div class="form-floating  mb-3">
 
-    <textarea name="specialities" class="form-control" value="{{specialities}}"
+    <textarea rows="1" name="specialities" class="form-control" value="{{specialities}}"
       id="floatingTextarea"></textarea>
 
   </div>
   <br>
   <label>Share us your catch phrase:</label>
-  <div class="form-floating">
+  <div class="form-floating mb-3">
 
-    <textarea name="catchPhrase" class="form-control" value="{{catchPhrase}}"></textarea>
+    <textarea rows="1" name="catchPhrase" class="form-control" value="{{catchPhrase}}"></textarea>
 
   </div>
   <br>
   <label>About me</label>
   <div class="form-floating">
 
-    <textarea name="aboutMe" class="form-control" value="{{aboutMe}}"></textarea>
+    <textarea rows="10" name="aboutMe" class="form-control" value="{{aboutMe}}"></textarea>
 
   </div>
   {{else}}
+ 
   <h2>Set your informations</h2>
-  <label for="img">Upload your profile picture</label>
-  <input type="file" id="img" name="image_Url" accept="image/*">
+   <div class="input-group mb-3">
+    <p>Upload your profile picture</p>
+    <div>
+  <input type="file" class="form-control" name="image_Url"  accept="image/*" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+    </div>
+</div>
 
   <div class="row">
     <div class="col">
@@ -54,18 +76,24 @@
       </label>
     </div> 
 {{/if}}
-    <button>Save Changes</button>
+    <button class="create-acount">Save Changes</button>
 
 </form>
 
 
 {{else}} 
 <form action="/user/{{_id}}/settings" method="POST" enctype="multipart/form-data">
-
-  {{#if isProfilePublic}}
+ <div class="container">
+    <div class="row">
+      <div class="col">
+         {{#if isProfilePublic}}
   <h2>Set your informations Chef</h2>
-  <label for="img">Upload your profile picture</label>
-  <input type="file" id="img" name="image_Url" accept="image/*">
+   <div class="input-group mb-3">
+    <p>Upload your profile picture</p>
+    <div>
+  <input type="file" class="form-control" name="image_Url"  accept="image/*" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+    </div>
+</div>
 
   <div class="row">
     <div class="col">
@@ -100,8 +128,12 @@
   </div> 
   {{else}}
   <h2>Set your informations</h2>
-  <label for="img">Upload your profile picture</label>
-  <input type="file" id="img" name="image_Url" accept="image/*">
+  <div class="input-group mb-3">
+    <p>Upload your profile picture</p>
+    <div>
+  <input type="file" class="form-control" name="image_Url"  accept="image/*" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+    </div>
+</div>
 
   <div class="row">
     <div class="col">
@@ -112,7 +144,22 @@
       </label>
     </div> 
   {{/if}}
-    <button>Save Changes</button>
+    <button class="create-acount">Save Changes</button>
 
+      </div>
+    </div>
+  </div>
+ 
 </form>
 {{/if}} 
+
+
+    </div>
+  </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

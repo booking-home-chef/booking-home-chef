@@ -7,7 +7,7 @@ const uploadUserProfile = require("../upload/uploadUserProfile");
 
 
 //list of all recipe
-router.get("/recipe", (req, res, next) => {
+router.get("/", (req, res, next) => {
   const userId = req.session.user._id
   Recipe.find()
     .then(recipesArr => {

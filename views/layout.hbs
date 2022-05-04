@@ -18,7 +18,7 @@
 
   <body>
 
-  <nav  class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav  class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid navigation-bar-content">
     <a class="navbar-brand" href="/">Home Chef</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,8 +26,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
      
-      <ul class="navbar-nav ul-of-navbar">
-         {{#if session.user}} 
+      <ul class="navbar-nav ">
+        <div class="ul-of-navbar">
+            {{#if session.user}} 
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/chef/chef-list">List of Chefs</a>
         </li>
@@ -36,7 +37,7 @@
         </li>
        {{else}}
        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/auth/signup">List of Chefs</a>
+          <a class="nav-link active" aria-current="page" style="" href="/auth/signup">List of Chefs</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/auth/signup">List of Recipes</a>
@@ -52,9 +53,15 @@
        
  {{#if session.user}} 
         <li class="nav-item dropdown ">
-          <a class="nav-link dropdown-toggle  " href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            My Dashboard
+          {{#if session.user.image_Url}}
+          <a class="nav-link dropdown-toggle dashboad-btn " href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{{session.user.image_Url}}" style=" width: 25px; height: 25px; border-radius: 50%; object-fit: cover;" alt="">
           </a>
+          {{else}}
+          <a class="nav-link dropdown-toggle dashboad-btn " href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="/images/placeholder.png" style=" width: 25px; height: 25px; border-radius: 50%; object-fit: cover;" alt="">
+          </a>
+          {{/if}}
           {{/if}}
            {{#if session.user.isProfilePublic}}
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
@@ -73,6 +80,8 @@
           </ul>
         </li>
            {{/if}}
+        </div>
+       
       </ul>
     </div>
   </div>

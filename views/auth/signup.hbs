@@ -1,27 +1,83 @@
-<h1>Sign up</h1>
-<a href="/auth/signin">Sign in</a>
-<hr />
-<form action="/auth/signup" method="POST">
-  <label>
-    Email
-    <input type="email" name="email" />
-  </label>
-  <label>
-    Password
-    <input type="password" name="password" />
-  </label>
-  <label >As Costumer
-  <input type="radio" name="isProfilePublic" value="false" required >
-  </label>
-<label >As Chef
-  <input type="radio"  name="isProfilePublic" value="true" >
-  </label>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
-  <p>if you have an account, clik <a href="/auth/signin">here</a> </p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 offset-lg-4 signup-signin signin-signup-form">
+      <h1 class="signup-tilte">Sign up</h1>
 
-  <button type="submit">Create account</button>
-</form>
+      <form class="row g-3" action="/auth/signup" method="POST">
+        <div class="col-12">
+          <label for="inputEmail4" class="form-label">Email</label>
+          <input
+            type="email"
+            placeholder="Email"
+            name="email"
+            class="form-control"
+            id="inputEmail4"
+            required
+          />
+        </div>
 
-{{#if errorMessage}}
-  {{errorMessage}}
-{{/if}}
+        <div class="col-12">
+          <label for="inputPassword4" class="form-label">Password</label>
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            class="form-control"
+            id="inputPassword4"
+          />
+        </div>
+
+        <div class="col-4 offset-2">
+          <div class="form-check">
+            <input
+              class="form-check-input radio-button"
+              type="radio"
+              name="isProfilePublic"
+              value="false"
+              required
+              id="gridCheck"
+            />
+            <label class="form-check-label radio-button" for="gridCheck">
+              As Costumer
+            </label>
+
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-check">
+            <input
+              class="form-check-input radio-button"
+              type="radio"
+              name="isProfilePublic"
+              value="true"
+              id="gridCheck"
+            />
+            <label class="form-check-label radio-button" for="gridCheck">
+              As Chef
+            </label>
+
+          </div>
+        </div>
+
+        <p class="link-to-signin">If you have an account, click
+          <a href="/auth/signin">here</a>
+        </p>
+
+        <div class="col-12 signup-signin">
+          <button type="submit" class="btn create-acount">Create account</button>
+        </div>
+      </form>
+      {{#if errorMessage}}
+        {{errorMessage}}
+      {{/if}}
+
+    </div>
+  </div>
+</div>

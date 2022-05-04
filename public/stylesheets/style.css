@@ -8,6 +8,8 @@ body {
 }
 
 
+
+
 .list-and-seemore a {
   color:black;
   text-decoration: none;
@@ -23,9 +25,9 @@ h1 {
   color: 15px;
 }
 
-.navigation-bar-content{
+/* .navigation-bar-content{
   display:flex;
-}
+} */
 
 
 .profile-image{
@@ -33,6 +35,8 @@ h1 {
   width: 200px;
  
 }
+
+
 
 
 
@@ -158,6 +162,7 @@ height: 100px;
 .heart{
   border: none;
   background-color: transparent;
+
   
 }
 
@@ -211,6 +216,133 @@ margin-left: 30px ;
 
 
 
+.ul-of-navbar{
+  display: flex;
+  justify-content: space-between;
+}
+
+.image-and-heart{
+  margin: 120px  0 50px 0;
+  display: flex;
+}
+
+.recipe-detail-text{
+  text-align: justify;
+  margin-bottom: 100px;
+}
+.recipe-detail-text h2{
+  font-weight: 900;
+}
+
+.recipe-detail-text h5{
+  font-weight:600;
+}
+
+.recipe-detail-text h5{
+  font-weight:600;
+}
+
+
+.owner-link p{
+margin-right: 10px;
+}
+
+.owner-link a{
+  margin-left: 20px;
+  text-decoration:none ;
+  color: rgb(127, 93, 7);
+  font-weight: 600;
+}
+
+.owner-link a:hover{
+  text-align: center;
+  border: 2px solid goldenrod;
+  border-radius:5px;
+  padding: 8px 10px;
+  background-color: goldenrod;
+  color: white;
+
+}
+
+.edit-and-delete{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.edit-and-delete button{
+  margin-left: 20px;
+  padding: 8px 20px;
+  border: 2px solid goldenrod;
+  border-radius:5px;
+  background-color: transparent;
+}
+
+.edit-and-delete button:hover{
+  background-color: goldenrod;
+  color: white;
+}
+
+
+.edit-and-delete a{
+  text-decoration: none;
+  color: rgb(17, 17, 17);
+  text-align: center;
+  border: 2px solid goldenrod;
+  border-radius:5px;
+  padding: 8px 20px;
+}
+.edit-and-delete a:hover{
+  background-color: goldenrod;
+  color: white;
+}
+
+.create-acount{
+  margin-top: 20px;
+
+  padding: 8px 20px;
+  border: 2px solid goldenrod;
+  border-radius:5px;
+  background-color: transparent;
+}
+
+.create-acount:hover{
+  background-color: goldenrod;
+  color: white;
+}
+
+
+
+.signup-signin{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+ 
+}
+
+.signup-tilte{
+  text-align: center;
+  color: rgb(175, 118, 13);
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.link-to-signin{
+  text-align: center;
+}
+.link-to-signin a{
+  color: rgb(4, 158, 163);
+  text-decoration: none;
+}
+.radio-button{
+  margin: 10px 0;
+}
+
+.signin-signup-form{
+  border: 1px solid rgb(207, 207, 207);
+  border-radius: 10px;
+  padding: 60px 40px;
+}
+
 /* a {
   text-decoration: none;
   color: goldenrod;
@@ -221,7 +353,6 @@ margin-left: 30px ;
 }
 
 a:hover{
-  background-color: goldenrod;
-  color: white;
+
 } */
 

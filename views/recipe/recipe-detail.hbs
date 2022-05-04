@@ -1,49 +1,78 @@
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
-<div class="image-and-heart">
-{{#if recipeDetail.image_Url}}
-<img class="recipe-image" src="{{recipeDetail.image_Url}}" alt="">
-{{else}}
-<img class="recipe-image" src="/images/recipe-placeholder.jpg" alt="">
-{{/if}}
+<div class="container">
+  <div class="row image-and-heart">
+    <div class="col-lg-5 offset-lg-1">
 
-{{#if likeIt}}
-<form action="/recipe/{{recipeDetail._id}}" method="POST">
-<button class="heart" type="submit" value="{{recipeDetail._id}}"  name="favRecipe" >
-  <img src="/images/gray-heart.png" alt="">
-</button>
-</form>
+      {{#if recipeDetail.image_Url}}
+        <img class="recipe-image" src="{{recipeDetail.image_Url}}" alt="" />
+      {{else}}
+        <img class="recipe-image" src="/images/recipe-placeholder.jpg" alt="" />
+      {{/if}}
 
-{{else}}
-<form action="/recipe/{{recipeDetail._id}}" method="POST">
-<button class="heart" type="submit" value="{{recipeDetail._id}}"  name="favRecipe" >
-  <img src="/images/red-heart.png" alt="">
-</button>
-</form>
-{{/if}}
+      {{#if likeIt}}
+        <form action="/recipe/{{recipeDetail._id}}" method="POST">
+          <button
+            class="heart"
+            type="submit"
+            value="{{recipeDetail._id}}"
+            name="favRecipe"
+          >
+            <img src="/images/gray-heart.png" alt="" />
+          </button>
+        </form>
 
+      {{else}}
+        <form action="/recipe/{{recipeDetail._id}}" method="POST">
+          <button
+            class="heart"
+            type="submit"
+            value="{{recipeDetail._id}}"
+            name="favRecipe"
+          >
+            <img src="/images/red-heart.png" alt="" />
+          </button>
+        </form>
+      {{/if}}
+
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2 recipe-detail-text">
+      <br />
+      <h2>{{recipeDetail.name}}</h2>
+      <h5>Ingredients </h5>
+      <p>{{recipeDetail.ingredient}}</p>
+      <h5>Description </h5>
+      <p>{{recipeDetail.description}}</p>
+      <h5>Diatery</h5>
+      {{#each recipeDetail.dietary}}
+        <span>{{this}} |</span>
+      {{/each}}
+      <br />
+      <br />
+      <div class="link-content">
+        <p class="owner-link"><b>By : </b>
+          <a
+            href="/chef/{{recipeDetail.owner.id}}"
+          >{{recipeDetail.owner.name}}</a></p>
+        <div class="edit-and-delete">
+          {{#if isTheSame}}
+
+            <a href="/recipe/{{recipeDetail._id}}/edit">Edit Recipe</a>
+            <form action="/recipe/{{recipeDetail._id}}/delete" method="POST">
+              <button type="submit">Delete</button>
+            </form>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
-
-<br>
-<h3>{{recipeDetail.name}}</h3>
-<h5>Ingredients : {{recipeDetail.ingredient}}</h5>
-<p>Description : {{recipeDetail.description}}</p>
-<h5>Diatery :</h5>
-{{#each recipeDetail.dietary}}
-<span>{{this}} |</span>
-{{/each}}
-<a href="/chef/{{recipeDetail.owner.id}}">By {{recipeDetail.owner.email}}</a>
-<a href="/">Back to Home page</a>
-
-<br>
-
-{{#if isTheSame}}
-
-<a href="/recipe/{{recipeDetail._id}}/edit">Edit Recipe</a>
-<br>
-<br>
-<form action="/recipe/{{recipeDetail._id}}/delete" method="POST">
-<button type="submit">Delete</button>
-</form>
-
-{{/if}}
-

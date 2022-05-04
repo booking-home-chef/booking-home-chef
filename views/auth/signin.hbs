@@ -1,18 +1,47 @@
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
-<h1>Sign in</h1>
-<a href="/auth/signup">Sign up</a>
-<hr>
-<form action="/auth/signin" method="POST">
-   <label> Email
-      <input type="text" name="email">
-   </label>
-   <label> Password
-      <input type="password" name="password">
-   </label>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 offset-lg-4 signup-signin signin-signup-form">
+      <h1 class="signup-tilte">Sign in</h1>
 
-   <button type="submit">Sign in</button>
-</form>
+      <form class="row g-3" action="/auth/signin" method="POST">
+        <div class="col-12">
+          <label for="inputEmail4" class="form-label">Email</label>
+          <input
+            type="email"
+            placeholder="Email"
+            name="email"
+            class="form-control"
+            id="inputEmail4"
+            required
+          />
+        </div>
 
-{{#if errorMessage}}
-   {{errorMessage}}
-{{/if}}
+        <div class="col-12">
+          <label for="inputPassword4" class="form-label">Password</label>
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            class="form-control"
+            id="inputPassword4"
+          />
+        </div>
+
+        <div class="col-12 signup-signin">
+          <button type="submit" class="btn create-acount">Sign in</button>
+        </div>
+      </form>
+      {{#if errorMessage}}
+        {{errorMessage}}
+      {{/if}}
+
+    </div>
+  </div>
+</div>
