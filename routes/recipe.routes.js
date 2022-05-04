@@ -7,7 +7,7 @@ const uploadUserProfile = require("../upload/uploadUserProfile");
 
 
 //list of all recipe
-router.get("/recipe", (req, res, next) => {
+router.get("/", (req, res, next) => {
   const userId = req.session.user._id
   Recipe.find()
     .then(recipesArr => {
@@ -77,6 +77,18 @@ router.get("/:recipeId", (req, res, next) => {
     .catch(e => console.log("error to find detail of recipe", e))
 })
 
+
+//Recipe comment section
+router.post("/:recipeId", (req, res, next)=>{
+  const recipeId = req.params.recipeId
+  const comment = `${req.session.user.name}: ${req.body.comments}`
+
+  Recipe.findByIdAndUpdate(recipeId, {$push: {comments:comment}})
+    .then(recipeCommented => {
+      res.redirect(`/recipe/${req.params.recipeId}`)
+    })
+    .catch(e => console.log("error not added to the DB", e))
+})
 
 
 
