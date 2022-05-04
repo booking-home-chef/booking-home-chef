@@ -68,7 +68,7 @@ const users = [
     image_Url: "/images/chef-image/daniel-morgan.jpeg",
     isProfilePublic: true,
     catchPhrase:"Chef with big respect for seasonal natural produce",
-    aboutMe: "Head Chef at Robert Paris. My career as a chef began in London, where I earned my stripes as a commis in some of the cities most well-established fine dining institutions such as; The Ritz, The Square, Sketch, and Maze by Gordon Ramsay. After 7 years of honing classical techniques and learning the fundamentals of cooking, I embarked on an international culinary trip which would see me visit, work, and live, in India, Japan, Colombia, Sweden, and Denmark, culminating in my eventual arrival to Paris where I would open and cook at my first restaurant as Head Chef - Salt. I believe intuition is a key element of my cooking and my travels have allowed me to have a varied repertoire that can be adapted to many environments, allowing me to utilise fresh local ingredients and produce. I have been honoured to accept accolades such as The Lebey guide 2016 best British Chef in Paris, as well as second place at The UK National Chef of the year award. More recently, I was voted Chef of the year 2021 by Lefooding. For the past three years, I have worked more autonomously adapting ideas and hosting private dinners is in gallery spaces, as well as collaborating with other well-established restaurants and Chefs on many projects. Wine is a big part of my DNA, and I have a keen interest in fermentation. I can offer tastings in both natural wine and beer too. All my menus can be adapted to lifestyles. My time in India and Southern America has given me a vast knowledge in flavours and spices, which lends itself to my Vegan and Vegetarian dishes.",
+    aboutMe: "Head Chef at Robert Paris. My career as a chef began in London, where I earned my stripes as a commis in some of the cities most well-established fine dining institutions such as; The Ritz, The Square, Sketch, and Maze by Gordon Ramsay. After 7 years of honing classical techniques and learning the fundamentals of cooking, I embarked on an international culinary trip which would see me visit, work, and live, in India, Japan, Colombia, Sweden, and Denmark, culminating in my eventual arrival to Paris where I would open and cook at my first restaurant as Head Chef - Salt. I believe intuition is a key element of my cooking and my travels have allowed me to have a varied repertoire that can be adapted to many environments, allowing me to utilise fresh local ingredients and produce. I have been honoured to accept accolades such as The Lebey guide 2016 best British Chef in Paris, as well as second place at The UK National Chef of the year award. More recently, I was voted Chef of the year 2021 by Lefooding. For the past three years, I have worked more autonomously adapting ideas and hosting private dinners is in gallery spaces, as well as collaborating with other well-established restaurants and Chefs on many projects. Wine is a big part of my DNA, and I have a keen interest in fermentation. I can offer tastings in both natural wine and beer too. All my menus can be adapted to lifestyles. My time in India and Southern America has given me a vast knowledge in flavours and spices, which lends itself to my vegan and vegetarian dishes.",
   },
   {
     name: "Alya Ben Hamza",
@@ -76,7 +76,7 @@ const users = [
     specialities: "fusion cuisine",
     image_Url: "/images/chef-image/alya-ben-hamza.jpg",
     isProfilePublic: true,
-    catchPhrase:"a passionate in my work",
+    catchPhrase:"A passionate in my work",
     aboutMe: "My site can talk about me :)but i can say i love to please people by making them the best i can .in my dishes i give my knowledges ;all i had learn in my long experience in this field,but not only ,making a good meal is a part of the culture of the countries !having a sushi is different than having a foie-gras it tells you different things and its also different in your palet or in your mouth !!!i have to make people say waw when they eat my dish!",
   }
 ];
@@ -88,7 +88,7 @@ const recipes = [
     type: ["starter"],
     ingredient: "1/2 kilogram (1 pound - 3 ounces) ground meat - beef - lamb - or a combo | 1 medium onion - finely chopped | 1 teaspoon paprika | 1 teaspoon cumin | 1 teaspoon pepper | 1 1/2 teaspoons salt | 1 teaspoon cinnamon | 8 tablespoons butter - divided | Handful fresh parsley leaves - chopped | 3 large eggs - lightly beaten | About 1 1/10 pound (1/2 kilogram) warqa - or filo dough - or large spring roll wrappers | 1 egg yolk - lightly beaten - for folding the briouats | Oil - for frying",
     description: "Briouats are small Moroccan pastries which are stuffed with a variety of fillings and then fried. This recipe features ground meat (kefta, kofta or kufta) enclosed in crisp, paper-thin Moroccan pastry called warqa. Phyllo (fillo) dough or spring roll wrappers can be substituted for the warqa. Kefta briouats are usually served as a finger food or appetizer, but they can also be served as an entrée. This filling is mildly seasoned. Also try Spicy Kefta Briouats.",
-    dietary: ["Kosher"],
+    dietary: ["kosher"],
     
   },
   {
@@ -106,11 +106,11 @@ const recipes = [
     type: ["main dish"],
     ingredient: "2 burger buns | 2 minced beef steaks of 150g | 2 burger buns | 2 minced beef steaks of 150g | 1 tomato | 2 cl of sunflower oil | 15 g unsalted butter | 2 pinches of powdered sugar | 2 button mushrooms | 30g of gruyère | 1 new onion | 2 cl of balsamic vinegar | 2 pinches of fine salt | For the sauce: | 1 egg yolk | sunflower oil | 1 pinch of fleur de sel | 10 g of honey",
     description: "Taste this quality burger that will surprise you with its original country sauce that you will want more.",
-    dietary: ["Lactose intolerance"],
+    dietary: ["lactose intolerance"],
     
   },
    {
-    name: "Compote of citrus supremes with whipped cream with Earl Gray tea and an oatmeal crumble, honey and pecan nuts (Recipe Christophe Michalak)",
+    name: "Compote of citrus supremes with whipped cream with Earl Gray tea and an oatmeal crumble",
     image_Url:"/images/recipe-image/compote-of-citrus.jpeg",
     type: ["dessert"],
     ingredient: "Crumble: | 125 g flour | 75 g brown sugar | 25 g rolled oats (or müesliou cereals) | 75 g butter | 1 g salt | 20 g honey | 30 g pecans | Citrus compote: | 2 oranges | 1 grapefruit | 2 lemons | 1 jar of citrus jam | 1 lime | Chantilly Earl Gray tea: | 600 g of liquid cream 35% UHT (no light, no light) cold | 60 g of powdered tea | 60 g of brown sugar | a few drops of orange blossom",
@@ -151,7 +151,7 @@ const recipes = [
     type: ["dessert"],
     ingredient: "150 g butter | 185 g brown sugar | 185 g flour",
     description: "The craquelin, a simple cookie-like dough consisting of sugar, butter, flour, and a pinch of salt, is rolled out, cut, and perched on top of piped choux and the two are baked together, producing pastry puffs with a crackly appearance, crunchy texture, and a buttery, sweet bite.",
-    dietary: ["Lactose intolerance"],
+    dietary: ["lactose intolerance"],
     
   },
   {
@@ -178,7 +178,7 @@ const recipes = [
     type: ["main dish"],
     ingredient: "One 630g jar of ratatouille | 20g butter | 4 eggs | 12 stalks of chives | 6 cherry tomatoes | 100 g of sugar | 1 pod of saffron | 1 tbsp. teaspoon of thyme | salt and pepper",
     description: "Combination of two French recipes, flan and seasonal vegetable ratatouille, which will please parents and children alike.",
-    dietary: ["Lactose intolerance"],
+    dietary: ["lactose intolerance"],
     
   },
   {
@@ -187,7 +187,7 @@ const recipes = [
     type: ["main dish"],
     ingredient: "500g pumpkin | 3 medium potatoes | 4 slices of gingerbread | 80 g grated emmental cheese | 1 tbsp. tablespoon heavy cream | 20 cl milk | 60 g butter | salt | pepper",
     description: "You have never tasted pumpkin recipe from a Chef",
-    dietary: ["Lactose intolerance"],
+    dietary: ["lactose intolerance"],
     
   },
   {
@@ -196,7 +196,7 @@ const recipes = [
     type: ["main dish"],
     ingredient: "1 large live lobster or if the price is too high, frozen lobster tails | 3 shallots | 1 clove of garlic | 3 sprigs of tarragon | 1 small can of peeled tomatoes | 4 tablespoons heavy cream | 1 glass of white wine | 1 glass of cognac or brandy | 150 g butter | 1/2 teaspoon cayenne pepper",
     description: "Armorican lobster, sometimes also called American lobster, is a very old recipe from French gastronomy. Discover this really tasty and refined dish, ideal for your festive meals and for the transition to the New Year.",
-    dietary: ["Food allergies"],
+    dietary: ["food allergies"],
     
   },
   {
@@ -223,7 +223,7 @@ const recipes = [
     type: ["dessert"],
     ingredient: "230g of dark chocolate, broken into pieces | 150g of butter, diced | 4 eggs | 160g of sugar | 70g of blanched peanuts, unsalted | 30g of blanched almonds | 20ml of rum | 10g of coffee granules",
     description: "The original recipe for this classic Italian dessert has been kept secret since it was first created in 1886. However, our chef have tried to recreate it and this recipe is one interpretation. And one I think you’ll find hard to resist. It’s made of almonds, peanuts, coffee, and dark chocolate. Both decadent and delightful.",
-    dietary: ["Food allergies"],
+    dietary: ["food allergies"],
     
   },
   {
@@ -232,7 +232,7 @@ const recipes = [
     type: ["dessert"],
     ingredient: "300 g (10,5 oz) Savoiardi Ladyfingers | 500 g (1,1 lb) of mascarpone cheese | 4 medium eggs (about 220 g/7,7 oz without shells) | 100 g (1/2 cup) of granulated sugar | 300 ml (1 ¼ cup) of coffee (better if espresso) | 2 tablespoons of Rum or Marsala | unsweetened cocoa powder,mint leafs",
     description: "Here is Authentic Italian Tiramisu Recipe, an Italian dessert made of savoiardi ladyfingers soaked in coffee, arranged in layers and filled with a cream made with mascarpone and eggs. Tiramisu is one of the most famous and delicious Italian dessert in the world, born in Treviso (a lovely town near Venice).",
-    dietary: ["Lactose intolerance"],
+    dietary: ["lactose intolerance"],
     
   },
   {
@@ -241,7 +241,7 @@ const recipes = [
     type: ["main dish"],
     ingringredient: "400 g arborio or carnarolli rice | 3 chicken stock tablets | 12 asparagusgreen | 1 large onion | 80 g of parmesan | 100 g of butter | 15 cl of dry white wine | salt | pepper | olive oil",
     description: "The chef has developed a recipe for Creamy Green Asparagus Risotto for you.",
-    dietary: ["Vegan","Vegetarian"],
+    dietary: ["vegan","vegetarian"],
     
   },
   {
@@ -250,7 +250,7 @@ const recipes = [
     type: ["starter"],
     ingredient: "1/4 cup cooking oil | 1 medium onion diced | 1-2 teaspoon curry powder | 2 teaspoons garlic minced | ½ teaspoon thyme | ½ teaspoon smoked paprika | 1 teaspoon cayenne pepper | ½ teaspoon ginger minced | 1-2 tomatoes | 3-4 cups sliced cabbage | 1 -2 Chili peppers diced seeds removed for less heat | 1 large carrot grated on the large side or sliced thinly | 1 medium green pepper diced | 1 medium red pepper diced | 1 14 ounce baked beans | 1 teaspoons bouillon powder optional",
     description: "Chakalaka is a South African vegetable relish made with onions, tomatoes, peppers, carrots, beans, and spices. It pairs well with bread, stews, meat, and many other dishes.",
-    dietary: ["Vegetarian","Vegan"],
+    dietary: ["vegetarian","vegan"],
     
   },
   {
@@ -304,7 +304,7 @@ const recipes = [
     type: ["main dish"],
     ingredient: "1 ½ tbsp tamarind pulp or paste | 50g golden muscovado sugar | 1 tbsp ground cumin | thumb-sized piece ginger chopped | 1.2kg new potato | 3 tbsp natural low-fat yogurt | 4 tbsp chopped coriander",
     description: "Tamarind is commonly used to flavour potatoes in India, and makes this low-fat salad authentic and punchy",
-    dietary: ["Vegetarian","Vegan"],
+    dietary: ["vegetarian","vegan"],
     
   },
   {
@@ -322,7 +322,7 @@ const recipes = [
     type: ["main dish"],
     ingredient: "1 tbsp sunflower oil | 1 onion , thinly sliced | 1 tbsp freshly grated ginger | 2 garlic cloves , crushed | 1 red chilli , deseeded and sliced | ½ tsp turmeric | ½ tsp chilli powder | 1 tsp ground coriander | 10 curry leaves | 1 large potato , diced | 400ml can half-fat coconut milk | 8 cherry tomatoes , halved | handful baby spinach | 200g pack raw peeled prawn | For the cumin rice | 1 tsp cumin seed | 175g basmati rice",
     description: "Indian meals with a curry in a hurry - throw in a handful of spices with shellfish, tomatoes, and spinach",
-    dietary: ["Vegetarian","Vegan"],
+    dietary: ["vegetarian","vegan"],
     
   },
   {
@@ -331,7 +331,7 @@ const recipes = [
     type: ["dessert"],
     ingredient: "1 x 50g/2oz sachet coconut cream | 500g 0% Greek yogurt or tub quark | 85g icing sugar , sieved | few drops vanilla extract | 2 kiwi fruit | 400g can pineapple chunks",
     description: "A quick low-fat pud the Chef will spice up to you liking.",
-    dietary: ["Lactose intolerance"],
+    dietary: ["lactose intolerance"],
     
   },
   {
@@ -340,7 +340,7 @@ const recipes = [
     type: ["starter"],
     ingredient: "3 carrots | bunch radishes | 2 courgettes | half a small red onion | small handful mint leaves, roughly torn | For the dressing | 1 tbsp white wine vinegar | 1 tsp Dijon mustard | 1 tbsp mayonnaise | 2 tbsp olive oil",
     description: "Packed with antioxidants, this superhealthy, colourful salad",
-    dietary: ["Vegetarian","Vegan"],
+    dietary: ["vegetarian","vegan"],
     
   },
   {
@@ -349,7 +349,7 @@ const recipes = [
     type: ["starter"],
     ingredient: "about 1kg butternut squash , cut into chunks | 2 carrots , chopped | 3 tbsp korma paste | small pack coriander , stalks and leaves chopped but separated | 1 large onion , chopped | 1.2l vegetable stock½ x 400g can reduced-fat coconut milk | 2 reduced-fat naan bread | 2 tsp garlic-flavoured oil | 2 tsp poppy seed",
     description: "This substantial and nourishing soup is flavoured with mild korma curry paste and mellowed by sweet coconut milk",
-    dietary: ["Vegetarian","Vegan"],
+    dietary: ["vegetarian","vegan"],
     
   },
   {
@@ -358,7 +358,7 @@ const recipes = [
     type: ["starter"],
     ingredient: "500g pack shortcrust pastry | 10cm piece fresh root ginger , peeled and roughly chopped | 20g pack fresh parsley , preferably flat leaf | 2 tbsp sunflower oil | 250g fresh white crabmeat | 2 eggs , plus 2 egg yolks | 300ml crème fraîche | For the chilli dressing | 4 spring onions , finely chopped | 1 lime , juice only | 1 red chilli , seeded and finely chopped | 3 tbsp light soy sauce | 6 tbsp sunflower oil | 1 tsp golden caster sugar",
     description: "Modern, British take on quiche",
-    dietary: ["Lactose intolerance","Gluten intolerance or sensitivity"],
+    dietary: ["lactose intolerance","gluten intolerance or sensitivity"],
     
   },
   {
@@ -403,7 +403,7 @@ const recipes = [
     type: ["dessert"],
     ingredient: "450g/1lb fresh raspberries | 2 tbsp icing sugar | 1 ripe mango, peeled, stone removed, diced | 150g/5½oz fresh blueberries | 12 scoops vanilla ice cream | 25g/1oz pistachios, coarsely chopped",
     description: "Knickerbocker glory, the dessert of childhood dreams! This traditional ice cream sundae is revisited by our chef.",
-    dietary: ["Lactose intolerance"],
+    dietary: ["lactose intolerance"],
     
   },
   {
@@ -421,7 +421,7 @@ const recipes = [
     type: ["starter","cocktail piece"],
     ingredient: "1 tbsp vegetable oil | 1 onion, finely chopped | 2 garlic cloves, crushed | 1 potato (about 150g) finely diced | 1 carrot (about 100g) finely diced | 100g frozen peas | 2 tsp curry powder or your own spices according to taste | 100ml vegetable stock | For the pastry: | 225g plain flour | 2 tsp sea salt | 2 tbsp vegetable oil | 2l vegetable oil to deep fry",
     description:"Serve up these crisp vegan samosas as a tasty starter or side dish with your favourite curry. They also make great buffet food for your next party.",
-    dietary: ["Vegetarian", "Vegan"],
+    dietary: ["vegetarian", "vegan"],
     
   },
   {
