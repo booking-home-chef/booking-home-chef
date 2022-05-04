@@ -6,9 +6,23 @@ body {
 
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+nav{
+  position: relative;
+}
+.navbar-content{
+  position: absolute;
+  margin-right: 70px;
+  top: 8px;
+  right: 16px;
+}
+.navbar-content a{
+  font-size: 19px;
+  margin-left: 15px;
+}
 
-
-
+.profile-content{
+  margin-right:40px;
+}
 
 .list-and-seemore a {
   color:black;
@@ -356,3 +370,40 @@ a:hover{
 
 } */
 
+
+
+.card-img-top{
+  position: relative;
+}
+
+.card-text-area-recipes {
+  position: absolute;
+  text-shadow: 2px 2px #2d2d2d;
+  bottom:3px;
+  left:auto;
+  text-align: center;
+ 
+  /* background-color: rgb(207, 207, 207,0.4); */
+
+}
+
+.card-text-area-recipes a{
+
+font-size: 17px;
+font-weight: 600;
+  text-decoration: none;
+  color: white;
+}
+
+
+.card-text-area-recipes a:hover{
+  color: goldenrod;
+}
+
+.card-text-area-recipes h5{
+  width: 19rem;
+  height:113px;
+ background-color: rgb(37, 37, 37, 0.4);
+ padding: 20px;
+  }
+  

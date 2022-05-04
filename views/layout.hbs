@@ -26,21 +26,21 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
      
-      <ul class="navbar-nav ">
+      <ul class="navbar-nav navbar-content ">
         <div class="ul-of-navbar">
             {{#if session.user}} 
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/chef/chef-list">List of Chefs</a>
+          <a class="nav-link active" aria-current="page" href="/chef/chef-list"> Chefs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/recipe">List of Recipes</a>
+          <a class="nav-link" href="/recipe">Recipes</a>
         </li>
        {{else}}
        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" style="" href="/auth/signup">List of Chefs</a>
+          <a class="nav-link active" aria-current="page" style="" href="/auth/signup"> Chefs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/auth/signup">List of Recipes</a>
+          <a class="nav-link" href="/auth/signup">Recipes</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/auth/signup">Sign up</a>
@@ -52,7 +52,7 @@
 
        
  {{#if session.user}} 
-        <li class="nav-item dropdown ">
+        <li class="nav-item profile-content   dropdown ">
           {{#if session.user.image_Url}}
           <a class="nav-link dropdown-toggle dashboad-btn " href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="{{session.user.image_Url}}" style=" width: 25px; height: 25px; border-radius: 50%; object-fit: cover;" alt="">

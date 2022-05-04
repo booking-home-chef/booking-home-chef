@@ -15,7 +15,7 @@
 <div class="container">
     <div class="row list-of-recipes">
 <div>
- <h1 class="text-center recipe-list-title">List of Recipes</h1>
+ <h1 class="text-center recipe-list-title">Recipes</h1>
 </div>
      {{#each recipes}}
   
@@ -24,17 +24,23 @@
    {{#if image_Url}}
   <img src="{{this.image_Url}}" class="card-img-top" style="width: 300px; height: 337px; object-fit: cover;" alt="...">
 {{else}}
-  <img src="/images/placeholder.png" class="card-img-top" style="width: 300px; height: 337px; object-fit: cover;" alt="...">
+  <img src="/images/recipe-placeholder.jpg" class="card-img-top" style="width: 300px; height: 337px; object-fit: cover;" alt="...">
   {{/if}}
-  <div class="card-body">
+  
     <div class="card-text-area-recipes">
-    <h5 class="card-title">{{this.name}}</h5>
-    <p class="card-text">{{this.dietary}} </p>
-    </div>
-    <a href="/recipe/{{this.id}}" class="btn btn-light">See full recipe</a>
+    <h5 class="card-title">
+      <a href="/recipe/{{this.id}}">{{this.name}}</a>
+    </h5>
+  
+    
+    
   </div>
 </div>
     </div>
     {{/each}}
   </div>
 </div>
+
+
+
+
