@@ -12,13 +12,16 @@ const recipeSchema = new Schema(
     description: String,
     dietary: {
       type: [String],
-      enum: ["Lactose intolerance", "Gluten intolerance or sensitivity", "Vegetarian", "Vegan", "Kosher", "Keto", "Diabetes", "Dairy-free", "Low carb", "Food allergies","Ask the chef"],
-      default:"Ask the chef"
+      enum: ["lactose intolerance", "gluten intolerance or sensitivity", "vegetarian", "vegan", "kosher", "keto", "diabetes", "dairy-free", "low carb", "food allergies","ask the chef"],
+      default:"ask the chef"
     },
     image_Url: String,
     owner: {
       type: Schema.Types.ObjectId,
       ref: "User",
+    },
+    comments:{
+      type: [String]
     }
   },
   {
