@@ -34,8 +34,8 @@ app.use((req, res, next) => {
 app.use("/", require("./routes/index.routes"));
 app.use("/auth", require("./routes/auth.routes"));
 app.use("/user",isLoggedIn, require("./routes/user.routes"))
-app.use("/",isLoggedIn, require("./routes/recipe.routes"))
-app.use("/chef",isLoggedIn, require("./routes/chef.routes"))
+app.use("/chef", require("./routes/chef.routes")) //,isLoggedIn, require("./routes/chef.routes"))
+app.use("/recipe",isLoggedIn, require("./routes/recipe.routes"))
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
