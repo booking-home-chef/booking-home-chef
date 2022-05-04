@@ -1,14 +1,11 @@
-const isLoggedIn = require("../middleware/isLoggedIn");
+// const isLoggedIn = require("../middleware/isLoggedIn");
 const Recipe = require("../models/Recipe.model");
 const User = require("../models/User.model");
 
 const router = require("express").Router();
 
 router.get("/chef-list", (req, res, next) => {
-  let chefsPages;
-
-
-  User.find({ isProfilePublic: true })
+  User.find() //{ isProfilePublic: true })
     .then(chefArr => {
       res.render("chef/chef-lists", { chefs: chefArr })
     })
