@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const User = require('/models/User.model');
-const Recipe = require('/models/Recipe.model');
+const User = require('../models/User.model');
+const Recipe = require('../models/Recipe.model');
 
 const MONGO_URI = process.env.MONGODB_URI || "mongodb://localhost/booking-home-chef";
 
