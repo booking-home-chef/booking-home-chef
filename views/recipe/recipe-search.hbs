@@ -5,16 +5,26 @@
 <br />
 <br />
 
-<div class="container">
-  <div class="row list-of-recipes">
-    <div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
       <h1 class="text-center recipe-list-title"> All {{dietary}} Recipes</h1>
-    </div>
-<div>
-  {{#each dieteryArr}}
-  <a class="dietry-links" href="/recipe/search/{{this}}"> {{this}} </a>
+  
+<div class="dietery-container">
+ {{#each dieteryArr}}
+  <div><a class="dietry-links" href="/recipe/search/{{this}}"> {{this}} </a></div><br><br><br>
   {{/each}}
 </div>
+ 
+      </div>
+    </div>
+  </div>
+
+
+<div class="container">
+  <div class="row list-of-recipes">
+    
 <br><br><br><br>
     {{#each recipes}}
       <div class="col-lg-3 col-md-6 col-sm-12 col-of-recipes">

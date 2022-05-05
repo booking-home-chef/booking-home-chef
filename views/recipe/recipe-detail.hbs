@@ -14,7 +14,7 @@
       {{else}}
         <img class="recipe-image" src="/images/recipe-placeholder.jpg" alt="" />
       {{/if}}
-
+<br><br>
       {{#if likeIt}}
         <form action="/recipe/{{recipeDetail._id}}" method="POST">
           <button
@@ -53,7 +53,7 @@
       <p>{{recipeDetail.description}}</p>
       <h5>Diatery</h5>
       {{#each recipeDetail.dietary}}
-        <a href="/recipe/search/{{this}}"  rel="noopener noreferrer"><span>{{this}} |</span></a>
+        <a href="/recipe/search/{{this}}" class="dietery-list"  rel="noopener noreferrer"><span>{{this}} |</span></a>
       {{/each}}
       <br />
       <br />
