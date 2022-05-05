@@ -4,6 +4,7 @@ const Recipe = require("../models/Recipe.model");
 const User = require("../models/User.model");
 const Favorite = require("../models/Favorite.model");
 const uploadUserProfile = require("../upload/uploadUserProfile");
+const { redirect } = require("express/lib/response");
 
 
 //list of all recipe
@@ -96,9 +97,15 @@ router.get("/:recipeId", (req, res, next) => {
 //edit recipe
 router.get('/:recipeId/edit', (req, res, next) => {
   const { recipeId } = req.params;
-
+  
   Recipe.findById(recipeId)
-    .then(recipeDetail => res.render('recipe/edit-recipe', recipeDetail))
+    .then(recipeDetail => {
+      if (recipeDetail.owner !== req.session.user.userId){
+        res.redirect(`/recipe/${recipeId}`)
+      }else{
+        res.render('recipe/edit-recipe', recipeDetail)
+      }
+  })
     .catch(error => next(error));
 });
 
