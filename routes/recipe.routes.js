@@ -22,7 +22,11 @@ router.get("/", (req, res, next) => {
 //create new recipe
 router.get("/create-recipe", (req, res, next) => {
   const userId = req.session.user._id
-  res.render("recipe/create-recipe", { userId })
+  if(req.session.user.isProfilePublic){
+    res.render("recipe/create-recipe", { userId })
+  } else {
+    res.redirect("/")
+  }
 })
 
 

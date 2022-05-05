@@ -10,6 +10,7 @@ const uploadUserProfile = require("../upload/uploadUserProfile");
 
 //Set the user as a Chef
 router.get("/:userId/settings", (req, res, next) => {
+  if (req.session.user.userId === req.params.userId){
   const { userId } = req.params
   console.log(userId);
   User.findById(userId)
@@ -18,7 +19,10 @@ router.get("/:userId/settings", (req, res, next) => {
       res.render("user/user-profile-settings", userInfo)
     })
     .catch(err => console.log(`Error is ${err}`))
-})
+  } else {
+    res.redirect("/")
+  }
+});
 
 
 //Set the user as a Chef proccess
@@ -52,7 +56,7 @@ router.post("/:userId/settings", uploadUserProfile.single('image_Url'), (req, re
 router.get("/:userId/my-recipes", (req, res, next) => {
   const userId = req.params.userId;
   Recipe.find({ owner: { _id: userId } })
-    .then(recipesArr => res.render("recipe/recipe-list", { recipes: recipesArr, userId }))
+    .then(recipesArr => res.render("recipe/my-recipe-list", { recipes: recipesArr, userId }))
     .catch(e => console.log("error to find  list of recipes", e))
 })
 
@@ -60,6 +64,7 @@ router.get("/:userId/my-recipes", (req, res, next) => {
 
 //add to my favorite recipe
 router.get('/:userId/my-favorite-recipes', (req, res, next) => {
+  if (req.session.user.userId === req.params.userId){
   const userId = req.params.userId
   Favorite.find({ currentUser: { _id: userId } })
     .populate("favRecipe")
@@ -67,7 +72,9 @@ router.get('/:userId/my-favorite-recipes', (req, res, next) => {
       res.render("recipe/favorite-recipe-list", { favRecipesArr: favRecipesArr, userId })
     })
     .catch(error => next(error));
-
+  } else {
+    res.redirect("/")
+  }
 })
 
 
@@ -75,13 +82,16 @@ router.get('/:userId/my-favorite-recipes', (req, res, next) => {
 
 //create user
 router.get("/:userId", (req, res, next) => {
+  if (req.session.user.userId === req.params.userId){
   const { userId } = req.params;
   User.findById(userId)
     .then(user => {
       console.log(user);
       res.render("user/user-profile", user);
     })
-
+  } else {
+    res.redirect("/")
+  }
 });
 
 
