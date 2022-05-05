@@ -74,6 +74,7 @@
           </ul>
           {{else}}
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="/user/{{session.user._id}}">My Profile</a></li>
             <li><a class="dropdown-item" href="/user/{{session.user._id}}/settings">Edit Your Profile</a></li>
             <li><a class="dropdown-item" href="/user/{{session.user._id}}/my-favorite-recipes">My favorite Recipes</a></li>
             <li><form action="/auth/logout" method="POST"><button class="log-out">Logout</button></form></li>
