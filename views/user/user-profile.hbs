@@ -20,6 +20,16 @@
           />
           <br />
           <br />
+          <br />
+
+          <a
+            href="/user/{{_id}}/settings"
+            style="margin-left: 60px;"
+            class="contact-me"
+          >Edit Profile </a>
+
+          <br />
+          <br />
           <h4 style="font-weight: 600;">Welcome Chef {{name}}!</h4>
           <br />
           <br />
@@ -49,8 +59,17 @@
             style="width: 250px; height: 250px; object-fit: cover;"
             class="profile-image"
           />
+          <br /><br /><br />
+          <a
+            href="/user/{{_id}}/settings"
+            style="margin-left: 60px;"
+            class="contact-me"
+          >Edit Profile</a>
+
+          <br />
+          <br /><br />
           <h4 style="font-weight: 600;">Welcome {{name}}!</h4>
-          {{!-- <a href="/user/{{_id}}/settings">Edit your profile</a> --}}
+          <br /><br />
         {{/if}}
         <br />
 
@@ -64,7 +83,9 @@
         <br />
         <br />
         <br />
-        <a href="/">back to the home page</a>
+        <div>
+          <a href="/">back to the home page</a>
+        </div>
         <br />
         <br />
         <br />

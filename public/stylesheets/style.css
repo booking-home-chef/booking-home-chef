@@ -420,7 +420,7 @@ font-weight: 600;
   
 
 
-  .user-profile a{
+  .user-profile div > a{
     text-decoration: none;
     color: black;
     font-size: 19px;
@@ -428,7 +428,7 @@ font-weight: 600;
   }
 
   
-  .user-profile a:hover{
+  .user-profile div >  a:hover{
     color: goldenrod;
 
   }
