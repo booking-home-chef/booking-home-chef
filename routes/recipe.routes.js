@@ -177,7 +177,7 @@ router.get("/search/:diatery", (req, res, next) => {
     .then(recipesArr => {
       let recipesFiltered = recipesArr.filter((recipes) => {
         return recipes.dietary.includes(dietary) }) //dietary.substring(0, 1).toUpperCase() + dietary.substring(1)
-    res.render("recipe/recipe-search", { recipes: recipesFiltered })
+    res.render("recipe/recipe-search", { recipes: recipesFiltered ,dietary})
     })
   .catch(error => {
     console.log("error getting a result from DB", error);
