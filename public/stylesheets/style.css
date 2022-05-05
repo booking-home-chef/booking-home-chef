@@ -80,7 +80,7 @@ h1 {
 
 }
 
-.card-img-top-hover:hover{
+.card-img-top:hover{
   transform: scale(1.25) rotate(8deg);
 }
 
