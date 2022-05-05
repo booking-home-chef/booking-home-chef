@@ -41,7 +41,7 @@ router.post("/create-recipe", uploadUserProfile.single('image_Url'), (req, res, 
   Recipe.create({ name, ingredient, description, dietary, owner, image_Url })
     .then((recipeFromDB) => {
 
-      res.redirect("/recipe");
+      res.redirect(`/user/${owner}/my-recipes`);
     })
     .catch(err => {
       console.log("error creating book on DB", err)
