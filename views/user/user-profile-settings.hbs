@@ -18,12 +18,7 @@
   {{#if isProfilePublic}}
   <h4>Set your informations</h4>
   <br>
-  <img
-            src="{{image_Url}}"
-            alt=""
-            style="width: 250px; height: 250px; object-fit: cover;"
-            class="profile-image"
-          />
+
   <div class="input-group mb-3">
     <p>Upload your profile picture</p>
     <div>
@@ -44,22 +39,22 @@
   <label for="floatingTextarea"> Specialities</label>
   <div class="form-floating  mb-3">
 
-    <textarea rows="1" name="specialities" class="form-control" 
-      id="floatingTextarea">{{specialities}}</textarea>
+    <textarea rows="1" name="specialities" class="form-control" value="{{specialities}}"
+      id="floatingTextarea"></textarea>
 
   </div>
   <br>
   <label>Share us your catch phrase:</label>
   <div class="form-floating mb-3">
 
-    <textarea rows="1" name="catchPhrase" class="form-control" >{{catchPhrase}}</textarea>
+    <textarea  name="catchPhrase" class="form-control" value="{{catchPhrase}}"></textarea>
 
   </div>
   <br>
   <label>About me</label>
   <div class="form-floating">
 
-    <textarea rows="10" name="aboutMe" class="form-control" >{{aboutMe}}</textarea>
+    <textarea rows="10" name="aboutMe" class="form-control" value="{{aboutMe}}"></textarea>
 
   </div>
   {{else}}

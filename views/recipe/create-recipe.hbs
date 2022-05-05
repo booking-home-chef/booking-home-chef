@@ -6,22 +6,37 @@
 <br />
 <br />
 
-<h2>Create New Recipe</h2>
-<form action="/recipe/create-recipe" method="POST" enctype="multipart/form-data">
-  <label for="img">Upload your recipe image</label>
-  <input class="recipe-image" type="file" id="img" name="image_Url"  accept="image/*" >
 
+<div class="container">
   <div class="row">
+    <div class="col-lg-4">
+
+<h2 style="  font-weight: 600;  margin-bottom: 30px;">Create New Recipe</h2>
+<form action="/recipe/create-recipe" method="POST" enctype="multipart/form-data">
+
+  <div class="input-group mb-3">
+    <p>Upload your recipe image</p>
+    <div>
+  <input type="file" class="form-control recipe-image" name="image_Url"  accept="image/*" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+    </div>
+</div>
+
     <div class="col">
+      <label for="">
+        Recipe name
+      </label>
       <input
         name="name"
         type="text"
         class="form-control"
         placeholder="Recipe name"
         aria-label="Recipe name"
+        required
       />
     </div>
+     <br>
     <div class="col">
+      <label for="">Ingredients</label>
       <input
         name="ingredient"
         type="text"
@@ -29,10 +44,11 @@
         placeholder="Ingredients"
         aria-label="Ingredient"
       />
-    </div>
-  </div>
+  
   <br>
-         <label for="floatingTextarea">Description</label>
+
+
+  <label for="floatingTextarea">Description</label>
  <div class="form-floating">
 
     <textarea
@@ -44,23 +60,46 @@
 
   </div>
 <br>
-
-  <div>
-    <select name="dietary" class="form-select"  multiple>
-      <option selected>select dietary</option>
-        <option name="dietary" value="Lactose intolerance">Lactose intolerance</option>
-        <option name="dietary" value="Gluten intolerance or sensitivity">Gluten intolerance or sensitivity</option>
-        <option name="dietary" value="Vegetarian">Vegetarian</option>
-        <option name="dietary" value="Vegan">Vegan</option>
-        <option name="dietary" value="Kosher">Kosher</option>
-        <option name="dietary" value="Keto">Keto</option>
-        <option name="dietary" value="Diabetes">Diabetes</option>
-        <option name="dietary" value="Dairy-free">Dairy-free</option>
-        <option name="dietary" value="Low carb">Low carb</option>
-        <option name="dietary" value="Food allergies"></option>Food allergies</option>
-    </select>
-  </div>
 <br>
-  <button>Create New Recipe</button>
+<div class="checkbox">
+<div class="left-checkbox">
+   <input type="checkbox"  name="dietary" value="lactose intolerance">
+  <label > Lactose intolerance</label><br>
+  <input type="checkbox"  name="dietary" value="gluten intolerance or sensitivity">
+  <label > Gluten intolerance or sensitivity</label><br>
+  <input type="checkbox" name="dietary" value="vegetarian">
+  <label > Vegetarian</label><br>
+   <input type="checkbox"  name="dietary" value="vegan">
+  <label > Vegan</label><br>
+  <input type="checkbox"  name="dietaryr" value="kosher">
+  <label > Kosher</label><br>
+</div>
+  
+<div class="right-checkbox">
+    <input type="checkbox"  name="dietary" value="keto">
+  <label > Keto</label><br>
+   <input type="checkbox"  name="dietary" value="diabetes">
+  <label > Diabetes</label><br>
+  <input type="checkbox"  name="dietary" value="dairy-free">
+  <label >Dairy-free</label><br>
+  <input type="checkbox"  name="dietary" value="low carb">
+  <label > Low carb</label><br>
+   <input type="checkbox"  name="dietary" value="food allergies">
+  <label > Food allergies</label><br>
+</div>
+</div>
+<br>
+  <button class="col-6 offset-3 create-acount">Create New Recipe</button>
 
 </form>
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+

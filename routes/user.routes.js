@@ -37,7 +37,6 @@ router.post("/:userId/settings", uploadUserProfile.single('image_Url'), (req, re
 
   User.findByIdAndUpdate(userId, { name, specialities, aboutMe, catchPhrase, image_Url })
     .then(userInfo => {
-      req.session.user.image_Url = image_Url
       console.log(userInfo)
       res.redirect(`/user/${userId}`)
     })

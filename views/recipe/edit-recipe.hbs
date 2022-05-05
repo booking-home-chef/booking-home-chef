@@ -5,13 +5,25 @@
 <br />
 <br />
 
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
 
 
 <form action="/recipe/{{_id}}/edit" method="POST" enctype="multipart/form-data">
-  <label for="img">Upload your recipe image</label>
-  <input type="file" id="img" name="image_Url"  accept="image/*" >
-  <div class="row">
-    <div class="col">
+
+  <div class="input-group mb-3">
+    <p>Upload your recipe image</p>
+    <div>
+  <input type="file" class="form-control recipe-image" name="image_Url"  accept="image/*" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+    </div>
+</div>
+<br>
+
+    <div class="col-12">
+      <label for="">
+        Recipe name
+      </label>
       <input
         name="name"
         value="{{name}}"
@@ -22,7 +34,9 @@
         required
       />
     </div>
-    <div class="col">
+    <br>
+    <div class="col-12">
+           <label for="">Ingredients</label>
       <input
         name="ingredient"
         type="text"
@@ -33,10 +47,10 @@
         required
       />
     </div>
-  </div>
-  <br>
-         <label for="floatingTextarea">Description</label>
- <div class="form-floating">
+
+  <br />
+  <label for="floatingTextarea">Description</label>
+  <div class="form-floating">
 
     <textarea
       name="description"
@@ -48,24 +62,16 @@
     >{{description}}</textarea>
 
   </div>
-<br>
-
-  <div>
-    <select name="dietary" value="{{dietary}}" class="form-select" required  multiple>
-      <option selected>select dietary</option>
-        <option name="dietary" value="Lactose intolerance">Lactose intolerance</option>
-        <option name="dietary" value="Gluten intolerance or sensitivity">Gluten intolerance or sensitivity</option>
-        <option name="dietary" value="Vegetarian">Vegetarian</option>
-        <option name="dietary" value="Vegan">Vegan</option>
-        <option name="dietary" value="Kosher">Kosher</option>
-        <option name="dietary" value="Keto">Keto</option>
-        <option name="dietary" value="Diabetes">Diabetes</option>
-        <option name="dietary" value="Dairy-free">Dairy-free</option>
-        <option name="dietary" value="Low carb">Low carb</option>
-        <option name="dietary" value="Food allergies"></option>Food allergies</option>
-    </select>
-  </div>
-<br>
-  <button>Edit Recipe</button>
+  <br />
+  {{#each dietary}}
+    <input type="checkbox" name="{{this}}" value="{{this}}" />
+    <label>{{this}}</label><br />
+  {{/each}}
+   <br />
+  <button class="col-6 offset-3 create-acount">Edit Recipe</button>
 
 </form>
+
+    </div>
+  </div>
+</div>
