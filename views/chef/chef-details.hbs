@@ -17,11 +17,15 @@
     <h5 class="about-me"> {{chefsDet.catchPhrase}}</h5>
     <br />
     <p class="about-me">{{chefsDet.specialities}}</p>
+    {{#if member}}
     <a
       class="contact-me"
       href="mailto:{{chefsDet.email}}"
       target="_blank"
     >Contact the Chef</a>
+    {{else}}
+    <a class="contact-me" href="/auth/signin">Contact details</a>
+    {{/if}}
   </div>
 </div>
 <div class="about-me">

@@ -14,17 +14,32 @@ router.get("/chef-list", (req, res, next) => {
 
 
 router.get("/:chefId", (req, res, next) => {
+  let member = true;
+  
+  if (req.session.user === undefined){
 
   User.findById(req.params.chefId)
-    .then(chefsDet => {
-      chefsDet.comments = chefsDet.comments.reverse();
-      Recipe.find({ owner: { _id: req.params.chefId } })
-        .populate("owner")
-        .then((chefsRecipesArr => {
-          res.render("chef/chef-details", { recipes: chefsRecipesArr, chefsDet })
-        }))
-    })
-    .catch(e => console.log((e)))
+  .then(chefsDet => {
+    chefsDet.comments = chefsDet.comments.reverse();
+    Recipe.find({ owner: { _id: req.params.chefId } })
+      .populate("owner")
+      .then((chefsRecipesArr => {
+        res.render("chef/chef-details", { recipes: chefsRecipesArr, chefsDet})
+      }))
+  })
+  .catch(e => console.log((e)))
+  } else {
+    User.findById(req.params.chefId)
+  .then(chefsDet => {
+    chefsDet.comments = chefsDet.comments.reverse();
+    Recipe.find({ owner: { _id: req.params.chefId } })
+      .populate("owner")
+      .then((chefsRecipesArr => {
+        res.render("chef/chef-details", { recipes: chefsRecipesArr, chefsDet, member})
+      }))
+  })
+  .catch(e => console.log((e)))
+  }
 })
 
 
@@ -35,7 +50,6 @@ router.post("/:chefId", (req, res, next)=>{
 
   User.findByIdAndUpdate(chefId, {$push: {comments:comment}})
     .then(chefCommented => {
-      console.log(chefCommented);
       res.redirect(`/chef/${req.params.chefId}`)
     })
     .catch(e => console.log("error not added to the DB", e))
