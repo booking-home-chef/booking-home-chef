@@ -27,18 +27,18 @@ router.get("/:chefId", (req, res, next) => {
 })
 
 
-// //Recipe comment section
-// router.post("/:chefId", (req, res, next)=>{
-//   const chefId = req.params.chefId
-//   const comment = `${req.session.user.name}: ${req.body.comments}`
+//Recipe comment section
+router.post("/:chefId", (req, res, next)=>{
+  const chefId = req.params.chefId
+  const comment = `${req.session.user.name}: ${req.body.comments}`
 
-//   User.findByIdAndUpdate(chefId, {$push: {comments:comment}})
-//     .then(chefCommented => {
-//       console.log(chefCommented);
-//       res.redirect(`/chef/${req.params.chefId}`)
-//     })
-//     .catch(e => console.log("error not added to the DB", e))
-// })
+  User.findByIdAndUpdate(chefId, {$push: {comments:comment}})
+    .then(chefCommented => {
+      console.log(chefCommented);
+      res.redirect(`/chef/${req.params.chefId}`)
+    })
+    .catch(e => console.log("error not added to the DB", e))
+})
 
 
 
