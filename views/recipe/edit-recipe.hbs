@@ -62,11 +62,38 @@
     >{{description}}</textarea>
 
   </div>
-  <br />
-  {{#each dietary}}
-    <input type="checkbox" name="{{this}}" value="{{this}}" />
-    <label>{{this}}</label><br />
-  {{/each}}
+
+<br>
+<p>Dietery</p>
+
+<div class="checkbox">
+<div class="left-checkbox">
+   <input type="checkbox"  name="dietary" value="lactose intolerance">
+  <label > Lactose intolerance</label><br>
+  <input type="checkbox"  name="dietary" value="gluten intolerance or sensitivity">
+  <label > Gluten intolerance or sensitivity</label><br>
+  <input type="checkbox" name="dietary" value="vegetarian">
+  <label > Vegetarian</label><br>
+   <input type="checkbox"  name="dietary" value="vegan">
+  <label > Vegan</label><br>
+  <input type="checkbox"  name="dietaryr" value="kosher">
+  <label > Kosher</label><br>
+</div>
+  
+<div class="right-checkbox">
+    <input type="checkbox"  name="dietary" value="keto">
+  <label > Keto</label><br>
+   <input type="checkbox"  name="dietary" value="diabetes">
+  <label > Diabetes</label><br>
+  <input type="checkbox"  name="dietary" value="dairy-free">
+  <label >Dairy-free</label><br>
+  <input type="checkbox"  name="dietary" value="low carb">
+  <label > Low carb</label><br>
+   <input type="checkbox"  name="dietary" value="food allergies">
+  <label > Food allergies</label><br>
+</div>
+</div>
+
    <br />
   <button class="col-6 offset-3 create-acount">Edit Recipe</button>
 
