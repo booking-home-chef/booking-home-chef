@@ -17,6 +17,7 @@ router.get("/:chefId", (req, res, next) => {
 
   User.findById(req.params.chefId)
     .then(chefsDet => {
+      chefsDet.comments = chefsDet.comments.reverse();
       Recipe.find({ owner: { _id: req.params.chefId } })
         .populate("owner")
         .then((chefsRecipesArr => {
