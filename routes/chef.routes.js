@@ -5,7 +5,7 @@ const User = require("../models/User.model");
 const router = require("express").Router();
 
 router.get("/chef-list", (req, res, next) => {
-  User.find() //{ isProfilePublic: true })
+  User.find({ isProfilePublic: true })
     .then(chefArr => {
       res.render("chef/chef-lists", { chefs: chefArr })
     })
