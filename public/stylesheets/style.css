@@ -428,3 +428,7 @@ font-weight: 600;
 
   }
 
+.checkbox{
+  display: flex;
+  justify-content: space-around;
+}
