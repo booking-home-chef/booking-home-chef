@@ -80,7 +80,7 @@ h1 {
 
 }
 
-.card-img-top:hover{
+.card-img-top-hover:hover{
   transform: scale(1.25) rotate(8deg);
 }
 
@@ -234,6 +234,26 @@ margin-left: 30px ;
   color: white;
 }
 
+.dietry-links{
+  text-decoration: none;
+  color: rgb(17, 17, 17);
+  text-align: center;
+  border: 2px solid goldenrod;
+  border-radius:5px;
+  padding: 8px 20px;
+  margin-left: 5px;
+}
+
+.dietry-links:hover{
+  background-color: goldenrod;
+  color: white;
+}
+
+.create-new-recipe-a{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
 
 
 .ul-of-navbar{

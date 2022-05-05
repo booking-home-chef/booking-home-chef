@@ -179,9 +179,12 @@ router.get("/search/:diatery", (req, res, next) => {
   const dietary = req.params.diatery
   Recipe.find()
     .then(recipesArr => {
+const dieteryArr = ["lactose intolerance", "gluten intolerance or sensitivity", "vegetarian", "vegan", "kosher", "keto", "diabetes", "dairy-free", "low carb", "food allergies"]
+
+
       let recipesFiltered = recipesArr.filter((recipes) => {
         return recipes.dietary.includes(dietary) }) //dietary.substring(0, 1).toUpperCase() + dietary.substring(1)
-    res.render("recipe/recipe-search", { recipes: recipesFiltered ,dietary})
+    res.render("recipe/recipe-search", { recipes: recipesFiltered ,dietary,dieteryArr})
     })
   .catch(error => {
     console.log("error getting a result from DB", error);
