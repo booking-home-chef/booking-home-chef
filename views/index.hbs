@@ -51,7 +51,7 @@
     </div>
    <div>
 
-    <a href="/chef/{{this.id}}" class="btn btn-light">see more</a>
+    <a href="/chef/{{this.id}}" class="btn btn-light contact-me">see more</a>
    </div>
   </div>
 </div>
@@ -74,9 +74,13 @@
     <div class="col-lg-3 col-md-6 col-sm-12 col-of-recipes">
 <div class="card" style="width: 19rem;">
    {{#if image_Url}}
-  <img src="{{this.image_Url}}" class="card-img-top" style="width: 300px; height: 337px; object-fit: cover;" alt="...">
+   <a href="/recipe/{{this.id}}">
+  <img src="{{this.image_Url}}" class="card-img-top card-img-top-hover" style="width: 300px; height: 337px; object-fit: cover;" alt="...">
+</a>
 {{else}}
-  <img src="/images/recipe-placeholder.jpg" class="card-img-top" style="width: 300px; height: 337px; object-fit: cover;" alt="...">
+<a href="/recipe/{{this.id}}">
+  <img src="/images/recipe-placeholder.jpg" class="card-img-top card-img-top-hover" style="width: 300px; height: 337px; object-fit: cover;" alt="...">
+  </a>
   {{/if}}
   
     <div class="card-text-area-recipes">
