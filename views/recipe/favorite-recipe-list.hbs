@@ -14,21 +14,25 @@
      {{#each favRecipesArr}}
   
     <div class="col-lg-3 col-md-6 col-sm-12 col-of-recipes">
+
 <div class="card" style="width: 19rem;">
-   {{#if favRecipe.image_Url}}
+   {{#if  favRecipe.image_Url}}
   <img src="{{this.favRecipe.image_Url}}" class="card-img-top" style="width: 300px; height: 337px; object-fit: cover;" alt="...">
 {{else}}
-  <img src="/images/placeholder.png" class="card-img-top" style="width: 300px; height: 337px; object-fit: cover;" alt="...">
+  <img src="/images/recipe-placeholder.jpg" class="card-img-top" style="width: 300px; height: 337px; object-fit: cover;" alt="...">
   {{/if}}
-  <div class="card-body">
+  
     <div class="card-text-area-recipes">
-    <h5 class="card-title">{{this.favRecipe.name}}</h5>
-    <p class="card-text">{{this.favRecipe.dietary}} </p>
-    </div>
-    <a href="/recipe/{{this.favRecipe._id}}" class="btn btn-light">See full recipe</a>
+    <h5 class="card-title">
+      <a href="/recipe/{{this.favRecipe._id}}">{{this.favRecipe.name}}</a>
+    </h5>
+  
+    
+    
   </div>
 </div>
     </div>
     {{/each}}
   </div>
 </div>
+

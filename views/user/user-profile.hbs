@@ -1,56 +1,78 @@
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
+<div class="container user-profile-container">
+  <div class="left">
+    <div class="row">
+      <div class="col-lg-3 user-profile">
 
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<hr>
-{{#if isProfilePublic}}
-<h4>Welcome To your Profile!</h4>
-<img class="profile-image" src="{{image_Url}}" alt="">
-<a href="/user/{{_id}}/settings">Edit your profile</a>
+        {{#if isProfilePublic}}
 
-<h2>Chef {{name}}</h2>
-<h5>Your mail :{{email}}</h5>
-<h5>My Specialities :</h5>
-<p>{{specialities}}</p>
-<br>
-<h5>Catch phrase:</h5>
-<p>{{catchPhrase}}</p>
-<br>
-<h5>About ME :</h5>
-<p>{{aboutMe}}</p>
-<br>
-<div>
-    <a href="/user/{{_id}}/my-recipes">My recipes</a>
+          <img
+            src="{{image_Url}}"
+            alt=""
+            style="width: 250px; height: 250px; object-fit: cover;"
+            class="profile-image"
+          />
+          <br />
+          <br />
+          <h4 style="font-weight: 600;">Welcome Chef {{name}}!</h4>
+          <br />
+          <br />
+          <h5 style="font-weight: 600;">Specialities </h5>
+          <p>{{specialities}}</p>
+          <br />
+          <h5 style="font-weight: 600;">Catch phrase</h5>
+          <p>{{catchPhrase}}</p>
+          <br />
+          <h5 style="font-weight: 600;">About Me </h5>
+          <p>{{aboutMe}}</p>
+          <br />
+          {{!-- <a href="/user/{{_id}}/settings">Edit your profile</a> --}}
+
+          <div>
+            <a href="/user/{{_id}}/my-recipes">My recipes</a>
+          </div>
+          <br />
+          <div>
+            <a href="/recipe/create-recipe">Create new recipe</a>
+          </div>
+        {{else}}
+
+          <img
+            src="{{image_Url}}"
+            alt=""
+            style="width: 250px; height: 250px; object-fit: cover;"
+            class="profile-image"
+          />
+          <h4 style="font-weight: 600;">Welcome {{name}}!</h4>
+          {{!-- <a href="/user/{{_id}}/settings">Edit your profile</a> --}}
+        {{/if}}
+        <br />
+
+        <div>
+          <a href="/user/{{_id}}/my-favorite-recipes">Favorite Recipes</a>
+        </div>
+        <br />
+        {{! <div>
+          <a href="/recipe">list of recipes</a>
+        </div> }}
+        <br />
+        <br />
+        <br />
+        <a href="/">back to the home page</a>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+      </div>
+    </div>
+  </div>
+
 </div>
-<br>
-<div>
-    <a href="/recipe/create-recipe">Create new recipe!</a>
-</div>
-{{else}}
-<h4>Welcome To your Profile {{name}}</h4>
-
-<img class="profile-image" src="{{image_Url}}" alt="">
-<a href="/user/{{_id}}/settings">Edit your profile</a>
-
-<h5>{{email}}</h5>
-{{/if}}
-<br>
-<br>
-<br>
-<div>
-    <a href="/user/{{_id}}/my-favorite-recipes">Favorite Recipes</a>
-</div>
-<br>
-<div>
-    <a href="/recipe">list of recipes</a>
-</div>
-<br>
-
-<br>
-
-<br>
-<a href="/">back to the home page</a>

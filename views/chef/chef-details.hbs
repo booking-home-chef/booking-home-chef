@@ -1,15 +1,32 @@
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
 <div class="profile-header">
-  <img src="{{chefsDet.image_Url}}" alt="" class="profile-image" />
+  <img
+    src="{{chefsDet.image_Url}}"
+    alt=""
+    style="width: 250px; height: 250px; object-fit: cover;"
+    class="profile-image"
+  />
   <div class="chef-catchphrase">
     <h2>Chef {{chefsDet.name}}</h2>
-    <h5>{{chefsDet.catchPhrase}}</h5>
-    <p>{{chefsDet.specialities}}</p>
-    <a class="contact-me" href="mailto:{{chefsDet.email}}" target="_blank">Contact the Chef</a>
+    <h5 class="about-me"> {{chefsDet.catchPhrase}}</h5>
+    <br />
+    <p class="about-me">{{chefsDet.specialities}}</p>
+    <a
+      class="contact-me"
+      href="mailto:{{chefsDet.email}}"
+      target="_blank"
+    >Contact the Chef</a>
   </div>
 </div>
 <div class="about-me">
-<h4>About Me</h4>
-<pre>{{chefsDet.aboutMe}}</pre>
+  <h4>About Me</h4>
+  <p>{{chefsDet.aboutMe}}</p>
 
 </div>
 
@@ -17,30 +34,39 @@
 
 <hr />
 
-
 <div class="container">
-    <div class="row list-of-recipes">
-<div>
- <h1 class="text-center recipe-list-title">{{chefsDet.name}} Recipes </h1>
-</div>
-     {{#each recipes}}
-  
-    <div class="col-lg-3 col-md-6 col-sm-12 col-of-recipes">
-<div class="card" style="width: 19rem;">
-   {{#if image_Url}}
-  <img src="{{this.image_Url}}" class="card-img-top" style="width: 300px; height: 337px; object-fit: cover;" alt="...">
-{{else}}
-  <img src="/images/placeholder.png" class="card-img-top" style="width: 300px; height: 337px; object-fit: cover;" alt="...">
-  {{/if}}
-  <div class="card-body">
-    <div class="card-text-area-recipes">
-    <h5 class="card-title">{{this.name}}</h5>
-    <p class="card-text">{{this.dietary}} </p>
+  <div class="row list-of-recipes">
+    <div>
+      <h1 class="text-center recipe-list-title">{{chefsDet.name}} Recipes </h1>
     </div>
-    <a href="/recipe/{{this.id}}" class="btn btn-light">See full recipe</a>
-  </div>
-</div>
-    </div>
+    {{#each recipes}}
+
+      <div class="col-lg-3 col-md-6 col-sm-12 col-of-recipes">
+        <div class="card" style="width: 19rem;">
+          {{#if image_Url}}
+            <img
+              src="{{this.image_Url}}"
+              class="card-img-top"
+              style="width: 300px; height: 337px; object-fit: cover;"
+              alt="..."
+            />
+          {{else}}
+            <img
+              src="/images/recipe-placeholder.jpg"
+              class="card-img-top"
+              style="width: 300px; height: 337px; object-fit: cover;"
+              alt="..."
+            />
+          {{/if}}
+
+          <div class="card-text-area-recipes">
+            <h5 class="card-title">
+              <a href="/recipe/{{this.id}}">{{this.name}}</a>
+            </h5>
+
+          </div>
+        </div>
+      </div>
     {{/each}}
   </div>
 </div>
