@@ -69,4 +69,44 @@
       </div>
     {{/each}}
   </div>
+
+  </div>
 </div>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-5 offset-3">
+<form action="/chef/{{chefsDet._id}}" method="POST" >
+
+ <label for="floatingTextarea">Comments</label>
+  <div class="form-floating">
+    <textarea
+      name="comments"
+      class="form-control"
+      placeholder="Write comment Here"
+      id="floatingTextarea"
+      required
+    ></textarea>
+     
+  <button class="col-6 offset-3 create-acount">comment</button>
+<br>
+<br>
+</form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5 offset-3">
+{{#each comments }}
+      <div>
+        <p>{{this}}</p>
+      </div>
+      <hr>
+      {{/each}}
+    </div>
+  </div>
+</div>
+<br>
+<br>
+
