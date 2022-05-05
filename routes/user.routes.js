@@ -24,7 +24,7 @@ router.get("/:userId/settings", (req, res, next) => {
 //Set the user as a Chef proccess
 router.post("/:userId/settings", uploadUserProfile.single('image_Url'), (req, res, next) => {
   const { userId } = req.params
-  const { name, specialities, aboutMe } = req.body;
+  const { name, specialities, aboutMe , catchPhrase} = req.body;
 
   let image_Url;
 
@@ -35,7 +35,7 @@ router.post("/:userId/settings", uploadUserProfile.single('image_Url'), (req, re
   }
 
 
-  User.findByIdAndUpdate(userId, { name, specialities, aboutMe, image_Url })
+  User.findByIdAndUpdate(userId, { name, specialities, aboutMe, catchPhrase, image_Url })
     .then(userInfo => {
       console.log(userInfo)
       res.redirect(`/user/${userId}`)
@@ -75,7 +75,6 @@ router.get('/:userId/my-favorite-recipes', (req, res, next) => {
 //create user
 router.get("/:userId", (req, res, next) => {
   const { userId } = req.params;
-
   User.findById(userId)
     .then(user => {
       console.log(user);
