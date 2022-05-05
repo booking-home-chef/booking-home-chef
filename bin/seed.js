@@ -59,6 +59,7 @@ const users = [
     specialities: "Indian",
     image_Url: "/images/chef-image/akhil-Bt.jpg",
     isProfilePublic: true,
+    catchPhrase:"A passionate cook who loves to make other people happy through food",
     aboutMe: "I’m a professional chef , with 13 years of experience mainly in Michelin starred kitchen across Europe , world renowned restaurants . I currently works as a private chef . I love the challenge to exceed the expectation of every palate I cook for and its a beautiful journey filled with excitement and adventure. I enjoy cooking fine dinning with Michelin star standard , Modern bistro style cuisine , Scandinavian , Indian , Asian and also Japanese cuisine (I’m not a sushi or hand made Sobha master) . I look forward to cook for you with your family and friends !!!!",
   },
   {
