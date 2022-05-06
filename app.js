@@ -26,6 +26,7 @@ const projectName = "booking-home-chef";
 app.locals.appTitle = `${capitalized(projectName)} created with IronLauncher`;
 app.use((req, res, next) => {
   res.locals.session = req.session; // allow access to session data from layout.hbs
+  req.app.locals.userDetails = req.session.user
   next()
 });
 

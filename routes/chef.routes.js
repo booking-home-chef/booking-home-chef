@@ -46,7 +46,8 @@ router.get("/:chefId", (req, res, next) => {
 //Recipe comment section
 router.post("/:chefId", (req, res, next)=>{
   const chefId = req.params.chefId
-  const comment = `${req.session.user.name}: ${req.body.comments}`
+  // const comment = `${req.session.user.name}: ${req.body.comments}`
+  const comment = `${req.app.locals.userDetails.name}: ${req.body.comments}`
 
   User.findByIdAndUpdate(chefId, {$push: {comments:comment}})
     .then(chefCommented => {
