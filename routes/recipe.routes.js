@@ -104,7 +104,7 @@ router.get('/:recipeId/edit', (req, res, next) => {
   
   Recipe.findById(recipeId)
     .then(recipeDetail => {
-      if (recipeDetail.owner !== req.session.user.userId){
+      if (recipeDetail.owner !== req.session.user._id){
         res.redirect(`/recipe/${recipeId}`)
       }else{
         res.render('recipe/edit-recipe', recipeDetail)

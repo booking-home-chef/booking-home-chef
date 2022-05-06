@@ -10,7 +10,7 @@ const uploadUserProfile = require("../upload/uploadUserProfile");
 
 //Set the user as a Chef
 router.get("/:userId/settings", (req, res, next) => {
-  if (req.session.user.userId === req.params.userId){
+  if (req.session.user._id === req.params.userId){
   const { userId } = req.params
   console.log(userId);
   User.findById(userId)
@@ -20,7 +20,7 @@ router.get("/:userId/settings", (req, res, next) => {
     })
     .catch(err => console.log(`Error is ${err}`))
   } else {
-    res.redirect("/")
+    res.redirect(`/user/${req.session.user._id}/settings`)
   }
 });
 
@@ -64,7 +64,7 @@ router.get("/:userId/my-recipes", (req, res, next) => {
 
 //add to my favorite recipe
 router.get('/:userId/my-favorite-recipes', (req, res, next) => {
-  if (req.session.user.userId === req.params.userId){
+  if (req.session.user._id === req.params.userId){
   const userId = req.params.userId
   Favorite.find({ currentUser: { _id: userId } })
     .populate("favRecipe")
@@ -73,16 +73,17 @@ router.get('/:userId/my-favorite-recipes', (req, res, next) => {
     })
     .catch(error => next(error));
   } else {
-    res.redirect("/")
+    
+    res.redirect(`/user/${req.session.user._id}/my-favorite-recipes`)
   }
 })
 
 
 
 
-//create user
+//My profile
 router.get("/:userId", (req, res, next) => {
-  if (req.session.user.userId === req.params.userId){
+  if (req.session.user._id === req.params.userId){
   const { userId } = req.params;
   User.findById(userId)
     .then(user => {
@@ -90,7 +91,7 @@ router.get("/:userId", (req, res, next) => {
       res.render("user/user-profile", user);
     })
   } else {
-    res.redirect("/")
+    res.redirect(`/user/${req.session.user._id}`)
   }
 });
 
