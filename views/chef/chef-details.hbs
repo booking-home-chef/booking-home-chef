@@ -6,23 +6,15 @@
 <br />
 
 <div class="profile-header">
-  <img
-    src="{{chefsDet.image_Url}}"
-    alt=""
-    style="width: 250px; height: 250px; object-fit: cover;"
-    class="profile-image"
-  />
+  <img src="{{chefsDet.image_Url}}" alt="" style="width: 250px; height: 250px; object-fit: cover;"
+    class="profile-image" />
   <div class="chef-catchphrase">
     <h2>Chef {{chefsDet.name}}</h2>
     <h5 class="about-me"> {{chefsDet.catchPhrase}}</h5>
     <br />
     <p class="about-me">{{chefsDet.specialities}}</p>
     {{#if member}}
-    <a
-      class="contact-me"
-      href="mailto:{{chefsDet.email}}"
-      target="_blank"
-    >Contact the Chef</a>
+    <a class="contact-me" href="mailto:{{chefsDet.email}}" target="_blank">Contact the Chef</a>
     {{else}}
     <a class="contact-me" href="/auth/signin">Contact details</a>
     {{/if}}
@@ -45,72 +37,69 @@
     </div>
     {{#each recipes}}
 
-      <div class="col-lg-3 col-md-6 col-sm-12 col-of-recipes">
-        <div class="card" style="width: 19rem;">
-          {{#if image_Url}}
-          <a href="/recipe/{{this.id}}">
-            <img
-              src="{{this.image_Url}}"
-              class="card-img-top card-img-top-hover"
-              style="width: 300px; height: 337px; object-fit: cover;"
-              alt="..."
-            />
-            </a>
-          {{else}}
-          <a href="/recipe/{{this.id}}">
-            <img
-              src="/images/recipe-placeholder.jpg"
-              class="card-img-top card-img-top-hover"
-              style="width: 300px; height: 337px; object-fit: cover;"
-              alt="..."
-            />
-            </a>
-          {{/if}}
+    <div class="col-lg-3 col-md-6 col-sm-12 col-of-recipes">
+      <div class="card" style="width: 19rem;">
+        {{#if image_Url}}
+        <a href="/recipe/{{this.id}}">
+          <img src="{{this.image_Url}}" class="card-img-top card-img-top-hover"
+            style="width: 300px; height: 337px; object-fit: cover;" alt="..." />
+        </a>
+        {{else}}
+        <a href="/recipe/{{this.id}}">
+          <img src="/images/recipe-placeholder.jpg" class="card-img-top card-img-top-hover"
+            style="width: 300px; height: 337px; object-fit: cover;" alt="..." />
+        </a>
+        {{/if}}
 
-          <div class="card-text-area-recipes">
-            <h5 class="card-title">
-              <a href="/recipe/{{this.id}}">{{this.name}}</a>
-            </h5>
+        <div class="card-text-area-recipes">
+          <h5 class="card-title">
+            <a href="/recipe/{{this.id}}">{{this.name}}</a>
+          </h5>
 
-          </div>
         </div>
       </div>
+    </div>
     {{/each}}
   </div>
 
-  </div>
+</div>
 </div>
 
 
 
+{{#if member}}
 <div class="container">
   <div class="row">
     <div class="col-6 offset-3 ">
-<form action="/chef/{{chefsDet._id}}" method="POST" >
+      <form action="/chef/{{chefsDet._id}}" method="POST">
 
- <label for="floatingTextarea">Comments</label>
-  <div class="form-floating">
-    <textarea
-      name="comments"
-      class="form-control"
-      placeholder="Write comment Here"
-      id="floatingTextarea"
-      required
-    ></textarea>
-     
-  <button class="col-6 offset-3 create-acount">Add a comment for the Chef</button>
-  <br>
-<br>
-  <h6>Comments</h6>
+        <label for="floatingTextarea">Comments</label>
+        <div class="form-floating">
+          <textarea name="comments" class="form-control" placeholder="Write comment Here" id="floatingTextarea"
+            required></textarea>
 
-</form>
+          <button class="col-6 offset-3 create-acount">Add a comment for the Chef</button>
+          <br>
+          <br>
+
+      </form>
     </div>
   </div>
+</div>
+
+{{else}}
+<div class="container mb-4">
   <div class="row">
-      
+    <div class="col-6 offset-5 ">
+      <a class="contact-me" href="/auth/signin">Become a member</a>
+    </div>
+  </div>
+</div>
+{{/if}}
+<div class="container">
+  <div class="row">
     <div class="col-6 offset-3  border-for-comments">
-   
-{{#each chefsDet.comments }}
+      {{#each chefsDet.comments }}
       <div>
         <p>{{this}}</p>
       </div>
@@ -121,4 +110,3 @@
 </div>
 <br>
 <br>
-
