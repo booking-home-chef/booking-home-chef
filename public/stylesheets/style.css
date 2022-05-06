@@ -82,6 +82,7 @@ h1 {
 
 .card-img-top-hover:hover{
   transform: scale(1.25) rotate(8deg);
+  transition: all 0.5s;
 }
 
 .card-body {
